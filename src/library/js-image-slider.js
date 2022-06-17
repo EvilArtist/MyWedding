@@ -102,18 +102,16 @@ function mcImgSlider(sliderOptions) {
 		width = "width",
 		height = "height",
 		top = "top",
-		B = "background",
+		background = "background",
 		marginLeft = "marginLeft",
 		appendChild = "appendChild",
-		l = "parentNode",
-		k = "nodeName",
-		S = "innerHTML",
-		cb = "offsetWidth",
-		u = setTimeout,
-		z = clearTimeout,
-		w = "indexOf",
-		N = "setAttribute",
-		bb = "removeChild",
+		parentNode = "parentNode",
+		nodeName = "nodeName",
+		innerHTML = "innerHTML",
+		offsetWidth = "offsetWidth",
+		indexOf = "indexOf",
+		setAttribute = "setAttribute",
+		removeChild = "removeChild",
 		L = function() {
 			this.d = [];
 			this.b = null
@@ -122,9 +120,9 @@ function mcImgSlider(sliderOptions) {
 			var b = 50,
 				a = navigator.userAgent,
 				c;
-			if ((c = a[w]("MSIE ")) != -1) b = parseInt(a.substring(c + 5, a[w](".", c)));
-			if (a[w]("Safari") != -1 && a[w]("Chrome") == -1) b = 300;
-			if (a[w]("Opera") != -1) b = 400;
+			if ((c = a.indexOf("MSIE ")) != -1) b = parseInt(a.substring(c + 5, a.indexOf(".", c)));
+			if (a.indexOf("Safari") != -1 && a.indexOf("Chrome") == -1) b = 300;
+			if (a.indexOf("Opera") != -1) b = 400;
 			return b
 		},
 		T = zb() < 9,
@@ -227,8 +225,8 @@ function mcImgSlider(sliderOptions) {
 	var G = new L,
 		gb = function() {
 			G.d = [];
-			z(m);
-			z(R);
+			clearTimeout(m);
+			clearTimeout(R);
 			m = R = null
 		},
 		xb = function(b) {
@@ -246,7 +244,7 @@ function mcImgSlider(sliderOptions) {
 		},
 		a, f, o, s, D, A, m, R, x, M, X, e, E, j = null,
 		vb = function() {
-			this[N]("data-loaded", "t")
+			this.setAttribute("data-loaded", "t")
 		},
 		ib = function(b) {
 			if (b == "series1") a.a = [6, 8, 15, 2, 5, 14, 13, 3, 7, 4, 14, 1, 13, 15];
@@ -271,7 +269,7 @@ function mcImgSlider(sliderOptions) {
 					sliderOptions.afterSlideChange && typeof sliderOptions.afterSlideChange !== "undefined" && sliderOptions.afterSlideChange(arguments)
 				}
 			};
-			if (f) a.m = Math.ceil(f.offsetHeight * a.g / f[cb]);
+			if (f) a.m = Math.ceil(f.offsetHeight * a.g / f.offsetWidth);
 			ib(sliderOptions.effect);
 			a.n = function() {
 				var b;
@@ -289,14 +287,14 @@ function mcImgSlider(sliderOptions) {
 		kb = function() {
 			if (b.b != 2) {
 				b.b = 1;
-				z(m);
+				clearTimeout(m);
 				m = null
 			}
 		},
 		hb = function() {
 			if (b.b != 2) {
 				b.b = 0;
-				if (m == null && !b.c && a.i) m = u(function() {
+				if (m == null && !b.c && a.i) m = setTimeout(function() {
 					j.y(j.n(b.a + 1), 0, 1)
 				}, a.b / 2)
 			}
@@ -306,7 +304,7 @@ function mcImgSlider(sliderOptions) {
 				b = 0,
 				c;
 			while (a < e.length) {
-				c = e[a][g] == "lazyImage" || e[a][h]("data-src") || e[a][g][w](" video") > -1 && typeof McVideo != "undefined";
+				c = e[a][g] == "lazyImage" || e[a][h]("data-src") || e[a][g].indexOf(" video") > -1 && typeof McVideo != "undefined";
 				if (c) {
 					b = 1;
 					break
@@ -321,7 +319,7 @@ function mcImgSlider(sliderOptions) {
 				while (a--) n[a][g] = a != b && n[a].on == 0 ? "thumb" : "thumb thumb-on"
 		},
 		ub = function(a) {
-			return a[l][h]("data-autovideo") == "true" || a[h]("data-autovideo") == "true"
+			return a.parentNode[h]("data-autovideo") == "true" || a[h]("data-autovideo") == "true"
 		},
 		wb = function() {
 			var f;
@@ -354,7 +352,7 @@ function mcImgSlider(sliderOptions) {
 			return c
 		},
 		eb = function(a, e, g, c, b, d, f) {
-			u(function() {
+			setTimeout(function() {
 				if (e && g == e - 1) {
 					var f = {};
 					f.a = function() {
@@ -389,7 +387,7 @@ function mcImgSlider(sliderOptions) {
 				i;
 			while (a--) {
 				i = g[a];
-				(i[k] == "BR" || T && p.test(i[k])) && f[bb](i)
+				(i.nodeName == "BR" || T && p.test(i.nodeName)) && f.removeChild(i)
 			}
 			g = f.children;
 			var e = g[length];
@@ -426,7 +424,7 @@ function mcImgSlider(sliderOptions) {
 	lb.prototype = {
 		c: function() {
 			if (x) return;
-			o = f[cb];
+			o = f.offsetWidth;
 			s = f.offsetHeight;
 			var r = getChildElements(f),
 				G = r[length];
@@ -442,19 +440,19 @@ function mcImgSlider(sliderOptions) {
 				j = r[G];
 				n = 0;
 				j.style.display = "none";
-				if (j[k] == "VIDEO" || j[k] == "AUDIO") {
+				if (j.nodeName == "VIDEO" || j.nodeName == "AUDIO") {
 					j.style.position = "absolute";
 					n = C("video");
-					j[l].insertBefore(n, j);
+					j.parentNode.insertBefore(n, j);
 					n.appendChild(j);
 					n.style.display = "none"
 				}
-				if (j[k] == "A" && j[g][w]("lazyImage") == -1)
+				if (j.nodeName == "A" && j[g].indexOf("lazyImage") == -1)
 					if (j[g]) j[g] = "imgLink " + j[g];
 					else j[g] = "imgLink";
 				if (n) e.push(n);
 				else e.push(j);
-				if (j[g][w](" video") != -1) {
+				if (j[g].indexOf(" video") != -1) {
 					this.A(j);
 					this.b(j)
 				}
@@ -468,26 +466,26 @@ function mcImgSlider(sliderOptions) {
 			f.appendChild(A);
 			A.style.transition = "opacity " + a.c + "ms";
 			var v = this.v();
-			if (e[b.a][k] == "IMG") b.e = e[b.a];
+			if (e[b.a].nodeName == "IMG") b.e = e[b.a];
 			else b.e = getChildrentElementByTagName(e[b.a], "img")[0];
-			if (e[b.a][k] == "A" || e[b.a][g] == "video") e[b.a].style.display = "block";
-			M.style[B] = 'url("' + b.e[h]("src") + '") no-repeat';
+			if (e[b.a].nodeName == "A" || e[b.a][g] == "video") e[b.a].style.display = "block";
+			M.style.background = 'url("' + b.e[h]("src") + '") no-repeat';
 			if (typeof getComputedStyle != "undefined") {
 				var y = getComputedStyle(f, null).borderRadius;
 				if (y) M.style.borderRadius = y
 			}
 			D = this.k();
 			this.m();
-			var q = b.e[l],
+			var q = b.e.parentNode,
 				z;
 			if (z = q.aP) {
 				this.d(q);
 				if (z === 1) q.aP = 0
 			} else if (a.i && b.d > 1) {
-				u(function() {
+				setTimeout(function() {
 					v.e(1)
 				}, 0);
-				m = u(function() {
+				m = setTimeout(function() {
 					v.y(v.n(1), 0, 1)
 				}, a.b + a.c)
 			}
@@ -522,7 +520,7 @@ function mcImgSlider(sliderOptions) {
 		f: function() {
 			x = C("navBulletsWrapper");
 			for (var e = [], a = 0; a < b.d; a++) e.push("<div rel='" + a + "'>" + (a + 1) + "</div>");
-			x[S] = e.join("");
+			x.innerHTML = e.join("");
 			for (var c = getChildElements(x), a = 0; a < c[length]; a++) {
 				if (a == b.a) c[a][g] = "active";
 				c[a].onclick = function() {
@@ -539,14 +537,14 @@ function mcImgSlider(sliderOptions) {
 			while (a--) {
 				if (a == b.a) d[a][g] = "active";
 				else d[a][g] = "";
-				if (e[a][k] == "A" || e[a][g] == "video") e[a].style.display = a == b.a ? "block" : "none"
+				if (e[a].nodeName == "A" || e[a][g] == "video") e[a].style.display = a == b.a ? "block" : "none"
 			}
 		},
 		k: function() {
 			var a = b.e[h]("alt") || "";
 			if (a && a.substr(0, 1) == "#") {
 				var c = getElement(a.substring(1));
-				a = c ? c[S] : ""
+				a = c ? c.innerHTML : ""
 			}
 			return a
 		},
@@ -554,7 +552,7 @@ function mcImgSlider(sliderOptions) {
 			K(A, 0)
 		},
 		m: function() {
-			A[S] = D;
+			A.innerHTML = D;
 			A.style.visibility = D ? "visible" : "hidden";
 			D && K(A, 1)
 		},
@@ -563,11 +561,11 @@ function mcImgSlider(sliderOptions) {
 		},
 		o: function() {
 			b.c = 0;
-			z(m);
+			clearTimeout(m);
 			m = null;
-			M.style[B] = 'url("' + b.e[h]("src") + '") no-repeat';
+			M.style.background = 'url("' + b.e[h]("src") + '") no-repeat';
 			var i = this,
-				d = b.e[l];
+				d = b.e.parentNode;
 			if (typeof d.aP === "undefined") d = 0;
 			var f;
 			if (d && (f = d.aP || X && /video$/.test(d[g]))) {
@@ -576,7 +574,7 @@ function mcImgSlider(sliderOptions) {
 			} else if (!b.b && a.i) {
 				var e = this.n(b.a + 1);
 				this.e(e);
-				m = u(function() {
+				m = setTimeout(function() {
 					i.y(e, 0, 1)
 				}, a.b)
 			}
@@ -585,20 +583,20 @@ function mcImgSlider(sliderOptions) {
 		e: function(j) {
 			var a = e[j],
 				m = 0;
-			if (a[k] == "A" && a[g][w]("lazyImage") == -1 || a[k] == "DIV" && a[g] == "video") {
+			if (a.nodeName == "A" && a[g].indexOf("lazyImage") == -1 || a.nodeName == "DIV" && a[g] == "video") {
 				a = getChildElements(a)[0];
 				m = 1
 			}
-			if (a[k] != "IMG") {
-				if (a[k] == "A") var d = a[h]("href"),
+			if (a.nodeName != "IMG") {
+				if (a.nodeName == "A") var d = a[h]("href"),
 					f = a[h]("title") || "",
 					i = 1;
-				else if (a[k] == "VIDEO" || a[k] == "AUDIO") {
+				else if (a.nodeName == "VIDEO" || a.nodeName == "AUDIO") {
 					var n = 1;
 					d = a[h]("data-image");
 					if (d) f = a[h]("data-alt") || "";
-					a[h]("data-autovideo") && a[l][N]("data-autovideo", a[h]("data-autovideo"));
-					this.A(a[l]);
+					a[h]("data-autovideo") && a.parentNode.setAttribute("data-autovideo", a[h]("data-autovideo"));
+					this.A(a.parentNode);
 					i = 0
 				} else {
 					d = a[h]("data-src");
@@ -607,42 +605,42 @@ function mcImgSlider(sliderOptions) {
 				}
 				if (f != null) {
 					var b = P.createElement("img");
-					b[N]("data-loaded", "f");
-					b[N]("alt", f);
+					b.setAttribute("data-loaded", "f");
+					b.setAttribute("alt", f);
 					b.onload = b.onerror = vb;
-					b[N]("src", d);
+					b.setAttribute("src", d);
 					b.style.display = "none";
 					if (n) {
-						a[l].insertBefore(b, a);
-						this.b(a[l], this);
+						a.parentNode.insertBefore(b, a);
+						this.b(a.parentNode, this);
 						if (T) {
-							a[l].style[B] = "none";
-							a[l].style.cursor = "default"
+							a.parentNode.style.background = "none";
+							a.parentNode.style.cursor = "default"
 						}
-					} else a[l].replaceChild(b, a);
+					} else a.parentNode.replaceChild(b, a);
 					if (i) e[j] = b
 				}
 			}
 		},
 		p: function(f) {
-			if (e[b.a][k] == "IMG") b.e = e[b.a];
+			if (e[b.a].nodeName == "IMG") b.e = e[b.a];
 			else b.e = getChildrentElementByTagName(e[b.a], "img")[0];
 			var g = b.e[h]("data-loaded");
 			if (g == "f") {
-				u(function() {
+				setTimeout(function() {
 					j.p(f)
 				}, 200);
 				return
 			}
 			b.c = 1;
 			this.g();
-			z(R);
+			clearTimeout(R);
 			D = this.k();
 			this.l();
-			R = u(function() {
+			R = setTimeout(function() {
 				j.m()
 			}, a.c / 2);
-			E[S] = "";
+			E.innerHTML = "";
 			var c = f ? f : a.n();
 			a.Ob.apply(this, [b.a, b.e, D, c]);
 			jb(b.a);
@@ -674,7 +672,7 @@ function mcImgSlider(sliderOptions) {
 					g[y] = -.2
 				} else {
 					i = {
-						width: b[a][cb],
+						width: b[a].offsetWidth,
 						opacity: 1
 					};
 					b[a].style.width = b[a].style.top = "0";
@@ -815,9 +813,9 @@ function mcImgSlider(sliderOptions) {
 				e.left = i * f + "px";
 				e.width = (f == a.f - 1 ? o - i * f : i) + "px";
 				e.height = "0px";
-				e[B] = 'url("' + b.e[h]("src") + '") no-repeat -' + f * i + "px 0%";
-				if (g == 10) e[B] = 'url("' + b.e[h]("src") + '") no-repeat right top';
-				else if (g == 12) e[B] = 'url("' + b.e[h]("src") + '") no-repeat left bottom';
+				e.background = 'url("' + b.e[h]("src") + '") no-repeat -' + f * i + "px 0%";
+				if (g == 10) e.background = 'url("' + b.e[h]("src") + '") no-repeat right top';
+				else if (g == 12) e.background = 'url("' + b.e[h]("src") + '") no-repeat left bottom';
 				e.position = "absolute";
 				K(j, 0);
 				E.appendChild(j);
@@ -836,7 +834,7 @@ function mcImgSlider(sliderOptions) {
 					d.h = g == a.m - 1 ? s - i * g : i;
 					e.width = d.w + "px";
 					e.height = d.h + "px";
-					e[B] = 'url("' + b.e[h]("src") + '") no-repeat -' + f * j + "px -" + g * i + "px";
+					e.background = 'url("' + b.e[h]("src") + '") no-repeat -' + f * j + "px -" + g * i + "px";
 					e.position = "absolute";
 					K(d, 0);
 					E.appendChild(d);
@@ -884,7 +882,7 @@ function mcImgSlider(sliderOptions) {
 	var Z = function() {
 		var a = getElement(sliderOptions.sliderId);
 		if (a && getChildElements(a)[length] && a.offsetHeight) j = new lb(a);
-		else u(Z, 500)
+		else setTimeout(Z, 500)
 	};
 	Y();
 	var Ab = function(c) {
@@ -905,13 +903,13 @@ function mcImgSlider(sliderOptions) {
 				var a = getChildElements(f),
 					e = a[length];
 				while (e--)
-					if (a[e][k] == "DIV") {
-						var h = a[e][l][bb](a[e]);
+					if (a[e].nodeName == "DIV") {
+						var h = a[e].parentNode.removeChild(a[e]);
 						h = null
 					} var c = getElement("mcVideo" + this.Id);
 				if (c) {
 					c.src = "";
-					var g = c[l][l][bb](c[l]);
+					var g = c.parentNode.parentNode.removeChild(c.parentNode);
 					g = null
 				}
 				b = {
@@ -950,7 +948,7 @@ function mcImgSlider(sliderOptions) {
 		},
 		switchAuto: function() {
 			if (a.i = !a.i) j.To(1);
-			else z(m)
+			else clearTimeout(m)
 		},
 		setEffect: function(a) {
 			ib(a)
