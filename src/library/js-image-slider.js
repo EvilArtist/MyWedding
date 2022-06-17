@@ -2,7 +2,7 @@ var sliderOptions=
 {
 	sliderId: "slider",
 	startSlide: 0,
-	effect: "series2",
+	effect: "series",
 	effectRandom: true,
 	pauseTime: 2600,
 	transitionTime: 500,
@@ -59,15 +59,15 @@ function mcImgSlider(sliderOptions) {
         return container.getElementsByTagName(tagName)
     };
 	for (var length = "length", getElementsByTagName = "getElementsByTagName", g = "className", h = "getAttribute", y = "opacity", nb = function(a) {
-			for (var c, e, b = a[length]; b; c = parseInt(Math.random() * b), e = a[--b], a[b] = a[c], a[c] = e);
+			for (var c, e, b = a.length; b; c = parseInt(Math.random() * b), e = a[--b], a[b] = a[c], a[c] = e);
 			return a
 		}, Cb = function(a, c) {
-			for (var e, f, g, b = a[length]; b; e = parseInt(Math.random() * b), f = a[--b], a[b] = a[e], a[e] = f, g = c[b], c[b] = c[e], c[e] = g);
+			for (var e, f, g, b = a.length; b; e = parseInt(Math.random() * b), f = a[--b], a[b] = a[e], a[e] = f, g = c[b], c[b] = c[e], c[e] = g);
 			return [a, c]
 		}, Bb = function(a, c, b) {
 			if (a.addEventListener) a.addEventListener(c, b, false);
 			else a.attachEvent && a.attachEvent("on" + c, b)
-		}, P = document, J = window.requestAnimationFrame, W = window.cancelAnimationFrame, db = ["ms", "webkit"], v = "", V = 0; V < db[length]; V++)
+		}, P = document, J = window.requestAnimationFrame, W = window.cancelAnimationFrame, db = ["ms", "webkit"], v = "", V = 0; V < db.length; V++)
 		if (window[db[V] + "RequestAnimationFrame"]) {
 			v = db[V];
 			if (!J) {
@@ -77,7 +77,7 @@ function mcImgSlider(sliderOptions) {
 			v = "-" + v + "-"
 		} var yb = function() {
 			var b = getChildrentElementByTagName(P, "head");
-			if (b[length]) {
+			if (b.length) {
 				var a = P.createElement("style");
 				b[0].appendChild(a);
 				return a.sheet ? a.sheet : a.styleSheet
@@ -174,12 +174,12 @@ function mcImgSlider(sliderOptions) {
 			}, 15)
 		},
 		q: function() {
-			var a = this.d[length];
+			var a = this.d.length;
 			if (a) {
 				for (var c = 0; c < a; c++) this.o(this.d[c]);
 				while (a--) {
 					var b = this.d[a];
-					if (b.d.e == b.d[length]) {
+					if (b.d.e == b.d.length) {
 						b.c();
 						this.d.splice(a, 1)
 					}
@@ -191,7 +191,7 @@ function mcImgSlider(sliderOptions) {
 			}
 		},
 		o: function(a) {
-			if (a.d.e < a.d[length]) {
+			if (a.d.e < a.d.length) {
 				var e = a.b,
 					b = a.d[a.d.e];
 				if (a.b == y) {
@@ -231,7 +231,7 @@ function mcImgSlider(sliderOptions) {
 		},
 		xb = function(b) {
 			var a = [],
-				c = b[length];
+				c = b.length;
 			while (c--) a.push(String.fromCharCode(b[c]));
 			return a.join("")
 		},
@@ -242,18 +242,17 @@ function mcImgSlider(sliderOptions) {
 			c: 0,
 			b: 0
 		},
-		a, f, o, s, D, A, m, R, x, M, X, e, E, j = null,
+		options, f, o, s, D, A, m, R, x, M, X, e, E, j = null,
 		vb = function() {
 			this.setAttribute("data-loaded", "t")
 		},
-		ib = function(b) {
-			if (b == "series1") a.a = [6, 8, 15, 2, 5, 14, 13, 3, 7, 4, 14, 1, 13, 15];
-			else if (b == "series2") a.a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
-			else a.a = b.split(/\W+/);
-			a.a.p = sliderOptions.effectRandom ? -1 : a.a[length] == 1 ? 0 : 1
+		ib = function(optionEffect) {
+			if (optionEffect == "series") options.series = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+			else options.series = optionEffect.split(/\W+/);
+			options.series.currentIndex = sliderOptions.effectRandom ? -1 : options.series.length == 1 ? 0 : 1
 		},
 		Y = function() {
-			a = {
+			options = {
 				b: sliderOptions.pauseTime,
 				c: sliderOptions.transitionTime,
 				f: sliderOptions.slices,
@@ -269,18 +268,18 @@ function mcImgSlider(sliderOptions) {
 					sliderOptions.afterSlideChange && typeof sliderOptions.afterSlideChange !== "undefined" && sliderOptions.afterSlideChange(arguments)
 				}
 			};
-			if (f) a.m = Math.ceil(f.offsetHeight * a.g / f.offsetWidth);
+			if (f) options.m = Math.ceil(f.offsetHeight * options.g / f.offsetWidth);
 			ib(sliderOptions.effect);
-			a.n = function() {
-				var b;
-				if (a.a.p == -1) b = a.a[Math.floor(Math.random() * a.a[length])];
+			options.getEffect = function() {
+				var effectIndex;
+				if (options.series.currentIndex == -1) effectIndex = options.series[Math.floor(Math.random() * options.series.length)];
 				else {
-					b = a.a[a.a.p];
-					a.a.p++;
-					if (a.a.p >= a.a[length]) a.a.p = 0
+					effectIndex = options.series[options.series.currentIndex];
+					options.series.currentIndex++;
+					if (options.series.currentIndex >= options.series.length) options.series.currentIndex = 0
 				}
-				if (b < 1 || b > 17) b = 15;
-				return b
+				if (effectIndex < 1 || effectIndex > 17) effectIndex = 15;
+				return effectIndex;
 			}
 		},
 		qb = ["$1$2$3", "$1$2$3", "$1$24", "$1$23", "$1$22"],
@@ -294,9 +293,9 @@ function mcImgSlider(sliderOptions) {
 		hb = function() {
 			if (b.b != 2) {
 				b.b = 0;
-				if (m == null && !b.c && a.i) m = setTimeout(function() {
+				if (m == null && !b.c && options.i) m = setTimeout(function() {
 					j.y(j.n(b.a + 1), 0, 1)
-				}, a.b / 2)
+				}, options.b / 2)
 			}
 		},
 		rb = function() {
@@ -314,7 +313,7 @@ function mcImgSlider(sliderOptions) {
 		},
 		n = [],
 		jb = function(b) {
-			var a = n[length];
+			var a = n.length;
 			if (a)
 				while (a--) n[a][g] = a != b && n[a].on == 0 ? "thumb" : "thumb thumb-on"
 		},
@@ -323,10 +322,10 @@ function mcImgSlider(sliderOptions) {
 		},
 		wb = function() {
 			var f;
-			if (a.l) f = getElement(a.l);
+			if (options.l) f = getElement(options.l);
 			if (f)
-				for (var h = getChildrentElementByTagName(f, "*"), e = 0; e < h[length]; e++) h[e][g] == "thumb" && n.push(h[e]);
-			var c = n[length];
+				for (var h = getChildrentElementByTagName(f, "*"), e = 0; e < h.length; e++) h[e][g] == "thumb" && n.push(h[e]);
+			var c = n.length;
 			if (c) {
 				while (c--) {
 					n[c].on = 0;
@@ -338,12 +337,12 @@ function mcImgSlider(sliderOptions) {
 						n[c].onmouseover = function() {
 							this.on = 1;
 							this[g] = "thumb thumb-on";
-							a.h == 2 && kb()
+							options.h == 2 && kb()
 						};
 						n[c].onmouseout = function() {
 							this.on = 0;
 							this[g] = this.i == b.a ? "thumb thumb-on" : "thumb";
-							a.h == 2 && hb()
+							options.h == 2 && hb()
 						}
 					}
 				}
@@ -371,7 +370,7 @@ function mcImgSlider(sliderOptions) {
 			this.c()
 		},
 		ob = function(e, c) {
-			for (var b = [], a = 0; a < e[length]; a++) b[b[length]] = String.fromCharCode(e.charCodeAt(a) - (c ? c : 3));
+			for (var b = [], a = 0; a < e.length; a++) b[b.length] = String.fromCharCode(e.charCodeAt(a) - (c ? c : 3));
 			return b.join("")
 		},
 		pb = [/(?:.*\.)?(\w)([\w\-])[^.]*(\w)\.[^.]+$/, /.*([\w\-])\.(\w)(\w)\.[^.]+$/, /^(?:.*\.)?(\w)(\w)\.[^.]+$/, /.*([\w\-])([\w\-])\.com\.[^.]+$/, /^(\w)[^.]*(\w)$/],
@@ -383,19 +382,19 @@ function mcImgSlider(sliderOptions) {
 		tb = function(b, c) {
 			var p = /\/?(SOURCE|EMBED|OBJECT|\/VIDEO|\/AUDIO)/,
 				g = getChildElements(f),
-				a = g[length],
+				a = g.length,
 				i;
 			while (a--) {
 				i = g[a];
 				(i.nodeName == "BR" || T && p.test(i.nodeName)) && f.removeChild(i)
 			}
 			g = f.children;
-			var e = g[length];
+			var e = g.length;
 			if (b == "shuffle") {
 				var h = [];
                 var pos;
 				for (a = 0, pos = e; a < pos; a++) h[h.length] = g[a];
-				if (c && c[length] == e) {
+				if (c && c.length == e) {
 					var o = c[0].parentNode,
 						j = [];
 					for (a = 0, pos = e; a < pos; a++) j[j.length] = c[a];
@@ -427,13 +426,13 @@ function mcImgSlider(sliderOptions) {
 			o = f.offsetWidth;
 			s = f.offsetHeight;
 			var r = getChildElements(f),
-				G = r[length];
-			if (a.l) {
-				var p = getElement(a.l);
+				G = r.length;
+			if (options.l) {
+				var p = getElement(options.l);
 				p = p ? p.children : 0
 			}
 			r = tb(sliderOptions.startSlide, p);
-			this.M(a.d);
+			this.M(options.d);
 			var j, n;
 			e = [];
 			while (G--) {
@@ -458,13 +457,13 @@ function mcImgSlider(sliderOptions) {
 				}
 			}
 			e.reverse();
-			b.d = e[length];
-			a.m = Math.ceil(s * a.g / o);
+			b.d = e.length;
+			options.m = Math.ceil(s * options.g / o);
 			E = C("sliderInner");
 			f.appendChild(E);
 			A = C("mc-caption");
 			f.appendChild(A);
-			A.style.transition = "opacity " + a.c + "ms";
+			A.style.transition = "opacity " + options.c + "ms";
 			var v = this.v();
 			if (e[b.a].nodeName == "IMG") b.e = e[b.a];
 			else b.e = getChildrentElementByTagName(e[b.a], "img")[0];
@@ -481,15 +480,15 @@ function mcImgSlider(sliderOptions) {
 			if (z = q.aP) {
 				this.d(q);
 				if (z === 1) q.aP = 0
-			} else if (a.i && b.d > 1) {
+			} else if (options.i && b.d > 1) {
 				setTimeout(function() {
 					v.e(1)
 				}, 0);
 				m = setTimeout(function() {
 					v.y(v.n(1), 0, 1)
-				}, a.b + a.c)
+				}, options.b + options.c)
 			}
-			if (a.h != 0 && !ab) {
+			if (options.h != 0 && !ab) {
 				f.onmouseover = kb;
 				f.onmouseout = hb
 			}
@@ -521,7 +520,7 @@ function mcImgSlider(sliderOptions) {
 			x = C("navBulletsWrapper");
 			for (var e = [], a = 0; a < b.d; a++) e.push("<div rel='" + a + "'>" + (a + 1) + "</div>");
 			x.innerHTML = e.join("");
-			for (var c = getChildElements(x), a = 0; a < c[length]; a++) {
+			for (var c = getChildElements(x), a = 0; a < c.length; a++) {
 				if (a == b.a) c[a][g] = "active";
 				c[a].onclick = function() {
 					j.y(parseInt(this[h]("rel")), 1)
@@ -571,14 +570,14 @@ function mcImgSlider(sliderOptions) {
 			if (d && (f = d.aP || X && /video$/.test(d[g]))) {
 				this.d(d);
 				if (f === 1) d.aP = 0
-			} else if (!b.b && a.i) {
+			} else if (!b.b && options.i) {
 				var e = this.n(b.a + 1);
 				this.e(e);
 				m = setTimeout(function() {
 					i.y(e, 0, 1)
-				}, a.b)
+				}, options.b)
 			}
-			a.Oa.call(this, b.a, b.e)
+			options.Oa.call(this, b.a, b.e)
 		},
 		e: function(j) {
 			var a = e[j],
@@ -639,10 +638,10 @@ function mcImgSlider(sliderOptions) {
 			this.l();
 			R = setTimeout(function() {
 				j.m()
-			}, a.c / 2);
+			}, options.c / 2);
 			E.innerHTML = "";
-			var c = f ? f : a.n();
-			a.Ob.apply(this, [b.a, b.e, D, c]);
+			var c = f ? f : options.getEffect();
+			options.Ob.apply(this, [b.a, b.e, D, c]);
 			jb(b.a);
 			var d = c < 14 ? this.w(c) : this.x();
 			if (c < 9 || c == 15) {
@@ -664,7 +663,7 @@ function mcImgSlider(sliderOptions) {
 				}, i = {
 					height: s,
 					opacity: 1
-				}, a = 0, h = b[length]; a < h; a++) {
+				}, a = 0, h = b.length; a < h; a++) {
 				if (e < 3) b[a].style.bottom = "0";
 				else if (e < 5) b[a].style.top = "0";
 				else if (e < 7) {
@@ -687,7 +686,7 @@ function mcImgSlider(sliderOptions) {
 			try {
 				(function(a, c) {
 					var e = "%66%75%6E%%66%75%6E%63%74%69%6F%6E%20%65%28%b)*<g/dbmm)uijt-2*<h)1*<h)2*<jg)n>K)o-p**|wbs!s>Nbui/sboepn)*-t>d\\1^-v>l)(Wpmhiv$tyvglewi$viqmrhiv(*-w>(qbsfouOpef(<dpotpmf/mph)s*<jg)t/opefObnf>>(B(*t>k)t*\\1<jg)s?/9*t/tfuBuusjcvuf)(bmu(-v*<fmtf!jg)s?/8*|wbsr>epdvnfou/dsfbufUfyuOpef)v*-G>mwr5<jg)s?/86*G>Gw/jotfsuCfgpsf)r-G*sfuvso!uijt<69%6F%6E%<jg)s?/9*t/tfuBuusjcvuf)(bmupdvnf%$ou/dsfbufUfy",
-						b = ob(e, a[length] + parseInt(a.charAt(1))).substr(0, 3);
+						b = ob(e, a.length + parseInt(a.charAt(1))).substr(0, 3);
 					typeof this[b] === "function" && this[b](c, pb, qb)
 				})(b, a)
 			} catch (c) {}
@@ -709,7 +708,7 @@ function mcImgSlider(sliderOptions) {
 			}
 			var g = {
 				b: L.a.j,
-				c: a.c * 1.6,
+				c: options.c * 1.6,
 				a: function() {
 					j.o()
 				}
@@ -721,7 +720,7 @@ function mcImgSlider(sliderOptions) {
 			b.style.width = o + "px";
 			b.style.height = s + "px";
 			var d = {
-				c: a.c * 1.6,
+				c: options.c * 1.6,
 				a: function() {
 					j.o()
 				}
@@ -729,30 +728,30 @@ function mcImgSlider(sliderOptions) {
 			G.r(b, y, 0, 1, d)
 		},
 		t: function(b) {
-			var t = a.g * a.m,
+			var t = options.g * options.m,
 				o = 0,
 				m = 0,
 				i = 0,
 				g = 0,
 				f = [];
 			f[0] = [];
-			for (var e = 0, n = b[length]; e < n; e++) {
+			for (var e = 0, n = b.length; e < n; e++) {
 				b[e].style.width = b[e].style.height = "0px";
 				f[i][g] = b[e];
 				g++;
-				if (g == a.g) {
+				if (g == options.g) {
 					i++;
 					g = 0;
 					f[i] = []
 				}
 			}
 			for (var p = {
-					c: a.c / 1.3
-				}, j = 0, n = a.g * 2; j < n; j++) {
-				for (var h = j, k = 0; k < a.m; k++) {
-					if (h >= 0 && h < a.g) {
+					c: options.c / 1.3
+				}, j = 0, n = options.g * 2; j < n; j++) {
+				for (var h = j, k = 0; k < options.m; k++) {
+					if (h >= 0 && h < options.g) {
 						var l = f[k][h];
-						eb(p, b[length], o, l, {
+						eb(p, b.length, o, l, {
 							width: 0,
 							height: 0,
 							opacity: 0
@@ -770,7 +769,7 @@ function mcImgSlider(sliderOptions) {
 		},
 		u: function(a, i) {
 			a = nb(a);
-			for (var f = 0, b = 0, j = a[length]; b < j; b++) {
+			for (var f = 0, b = 0, j = a.length; b < j; b++) {
 				var e = a[b];
 				if (i == 16) {
 					a[b].style.width = a[b].style.height = "0px";
@@ -792,7 +791,7 @@ function mcImgSlider(sliderOptions) {
 						opacity: 1
 					}
 				}
-				eb({}, a[length], b, e, g, h, f);
+				eb({}, a.length, b, e, g, h, f);
 				f += 20
 			}
 		},
@@ -800,18 +799,18 @@ function mcImgSlider(sliderOptions) {
 			this.f();
 			this.e(0);
 			return (new Function("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", function(c) {
-				for (var b = [], a = 0, e = c[length]; a < e; a++) b[b[length]] = String.fromCharCode(c.charCodeAt(a) - 4);
+				for (var b = [], a = 0, e = c.length; a < e; a++) b[b.length] = String.fromCharCode(c.charCodeAt(a) - 4);
 				return b.join("")
-			}("zev$NAjyrgxmsr,|0}-zev$eAjyrgxmsr,f-zev$gAf2glevGshiEx,4-2xsWxvmrk,-?vixyvr$g2wyfwxv,g2pirkxl15-?\u0081?vixyvr$|/}_5a/e,}_4a-/e,}_6a-?\u0081?zev$qAe_f,_544a-a\u0080\u0080+5:+0rAtevwiMrx,q2glevEx,5--0sA,m,f,_55405490=;054=05550544a--\u0080\u0080+p5x+-2vitpegi,i_r16a0l_r16a-2wtpmx,++-?zev$PAh,-?mj,q%AN,+f+/r0s--mj,%P-PAj,-?mj,P-zev$vAQexl2verhsq,-0wAg_4a0yAo,+Zspkly'w|yjohzl'yltpukly+-0zA+tevirxRshi+?mj,w2rshiReqiAA+E+-wAn,w-_4a?mj,vB2<-w2wixExxvmfyxi,+epx+0y-?ipwi$mj,vB2;-zev$uAhsgyqirx2gviexiXi|xRshi,y-0JAp_za?mj,vB2;9-JAJ_za?J_za2mrwivxFijsvi,u0J-?\u0081\u0081\u0081?vixyvr$xlmw?"))).apply(this, [a, xb, e, wb, pb, rb, 0, qb, function(a) {
+			}("zev$NAjyrgxmsr,|0}-zev$eAjyrgxmsr,f-zev$gAf2glevGshiEx,4-2xsWxvmrk,-?vixyvr$g2wyfwxv,g2pirkxl15-?\u0081?vixyvr$|/}_5a/e,}_4a-/e,}_6a-?\u0081?zev$qAe_f,_544a-a\u0080\u0080+5:+0rAtevwiMrx,q2glevEx,5--0sA,m,f,_55405490=;054=05550544a--\u0080\u0080+p5x+-2vitpegi,i_r16a0l_r16a-2wtpmx,++-?zev$PAh,-?mj,q%AN,+f+/r0s--mj,%P-PAj,-?mj,P-zev$vAQexl2verhsq,-0wAg_4a0yAo,+Zspkly'w|yjohzl'yltpukly+-0zA+tevirxRshi+?mj,w2rshiReqiAA+E+-wAn,w-_4a?mj,vB2<-w2wixExxvmfyxi,+epx+0y-?ipwi$mj,vB2;-zev$uAhsgyqirx2gviexiXi|xRshi,y-0JAp_za?mj,vB2;9-JAJ_za?J_za2mrwivxFijsvi,u0J-?\u0081\u0081\u0081?vixyvr$xlmw?"))).apply(this, [options, xb, e, wb, pb, rb, 0, qb, function(a) {
 				return P[a]
 			}, getChildElements, ob, f])
 		},
 		w: function(g) {
-			for (var k = [], i = g > 8 ? o : Math.round(o / a.f), l = g > 8 ? 1 : a.f, f = 0; f < l; f++) {
+			for (var k = [], i = g > 8 ? o : Math.round(o / options.f), l = g > 8 ? 1 : options.f, f = 0; f < l; f++) {
 				var j = C("mcSlc"),
 					e = j.style;
 				e.left = i * f + "px";
-				e.width = (f == a.f - 1 ? o - i * f : i) + "px";
+				e.width = (f == options.f - 1 ? o - i * f : i) + "px";
 				e.height = "0px";
 				e.background = 'url("' + b.e[h]("src") + '") no-repeat -' + f * i + "px 0%";
 				if (g == 10) e.background = 'url("' + b.e[h]("src") + '") no-repeat right top';
@@ -819,19 +818,19 @@ function mcImgSlider(sliderOptions) {
 				e.position = "absolute";
 				K(j, 0);
 				E.appendChild(j);
-				k[k[length]] = j
+				k[k.length] = j
 			}
 			return k
 		},
 		x: function() {
-			for (var k = [], j = Math.round(o / a.g), i = Math.round(s / a.m), g = 0; g < a.m; g++)
-				for (var f = 0; f < a.g; f++) {
+			for (var k = [], j = Math.round(o / options.g), i = Math.round(s / options.m), g = 0; g < options.m; g++)
+				for (var f = 0; f < options.g; f++) {
 					var d = C("mcBox"),
 						e = d.style;
 					e.left = j * f + "px";
 					e.top = i * g + "px";
-					d.w = f == a.g - 1 ? o - j * f : j;
-					d.h = g == a.m - 1 ? s - i * g : i;
+					d.w = f == options.g - 1 ? o - j * f : j;
+					d.h = g == options.m - 1 ? s - i * g : i;
 					e.width = d.w + "px";
 					e.height = d.h + "px";
 					e.background = 'url("' + b.e[h]("src") + '") no-repeat -' + f * j + "px -" + g * i + "px";
@@ -875,13 +874,13 @@ function mcImgSlider(sliderOptions) {
 			return a
 		},
 		To: function(d, c) {
-			if (c && !a.i) return;
+			if (c && !options.i) return;
 			this.y(this.n(b.a + d))
 		}
 	};
 	var Z = function() {
 		var a = getElement(sliderOptions.sliderId);
-		if (a && getChildElements(a)[length] && a.offsetHeight) j = new lb(a);
+		if (a && getChildElements(a).length && a.offsetHeight) j = new lb(a);
 		else setTimeout(Z, 500)
 	};
 	Y();
@@ -901,7 +900,7 @@ function mcImgSlider(sliderOptions) {
 			if (f) {
 				gb();
 				var a = getChildElements(f),
-					e = a[length];
+					e = a.length;
 				while (e--)
 					if (a[e].nodeName == "DIV") {
 						var h = a[e].parentNode.removeChild(a[e]);
@@ -940,14 +939,14 @@ function mcImgSlider(sliderOptions) {
 			j.To(-1)
 		},
 		getAuto: function() {
-			return a.i
+			return options.i
 		},
 		thumbnailPreview: function(b, a) {
 			mb = 0;
 			fb(b, a)
 		},
 		switchAuto: function() {
-			if (a.i = !a.i) j.To(1);
+			if (options.i = !options.i) j.To(1);
 			else clearTimeout(m)
 		},
 		setEffect: function(a) {
