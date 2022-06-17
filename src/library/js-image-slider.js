@@ -58,10 +58,11 @@ function mcImgSlider(sliderOptions) {
     var getChildrentElementByTagName = function(container, tagName) {
         return container.getElementsByTagName(tagName)
     };
-	for (var length = "length", getElementsByTagName = "getElementsByTagName", g = "className", h = "getAttribute", y = "opacity", nb = function(a) {
-			for (var c, e, b = a.length; b; c = parseInt(Math.random() * b), e = a[--b], a[b] = a[c], a[c] = e);
-			return a
-		}, Cb = function(a, c) {
+    var nb = function(a) {
+        for (var c, e, b = a.length; b; c = parseInt(Math.random() * b), e = a[--b], a[b] = a[c], a[c] = e);
+        return a
+    }
+	for (var Cb = function(a, c) {
 			for (var e, f, g, b = a.length; b; e = parseInt(Math.random() * b), f = a[--b], a[b] = a[e], a[e] = f, g = c[b], c[b] = c[e], c[e] = g);
 			return [a, c]
 		}, Bb = function(a, c, b) {
@@ -131,7 +132,7 @@ function mcImgSlider(sliderOptions) {
 			if (a) {
 				a.o = b;
 				if (T) a.style.filter = "alpha(opacity=" + b * 100 + ")";
-				else a.style[y] = b
+				else a.style.opacity = b
 			}
 		};
 	L.a = {
@@ -155,7 +156,7 @@ function mcImgSlider(sliderOptions) {
 		m: function(h, d, g, c) {
 			for (var b = [], i = g - d, j = g > d ? 1 : -1, f = Math.ceil(60 * c.c / 1e3), a, e = 1; e <= f; e++) {
 				a = d + c.b(e / f, c.d) * i;
-				if (h != y) a = Math.round(a);
+				if (h != 'opacity') a = Math.round(a);
 				b.push(a)
 			}
 			b.e = 0;
@@ -194,7 +195,7 @@ function mcImgSlider(sliderOptions) {
 			if (a.d.e < a.d.length) {
 				var e = a.b,
 					b = a.d[a.d.e];
-				if (a.b == y) {
+				if (a.b == 'opacity') {
 					if (T) {
 						e = "filter";
 						b = "alpha(opacity=" + Math.round(b * 100) + ")"
@@ -303,7 +304,7 @@ function mcImgSlider(sliderOptions) {
 				b = 0,
 				c;
 			while (a < e.length) {
-				c = e[a][g] == "lazyImage" || e[a][h]("data-src") || e[a][g].indexOf(" video") > -1 && typeof McVideo != "undefined";
+				c = e[a].className == "lazyImage" || e[a].getAttribute("data-src") || e[a].className.indexOf(" video") > -1 && typeof McVideo != "undefined";
 				if (c) {
 					b = 1;
 					break
@@ -315,16 +316,16 @@ function mcImgSlider(sliderOptions) {
 		jb = function(b) {
 			var a = n.length;
 			if (a)
-				while (a--) n[a][g] = a != b && n[a].on == 0 ? "thumb" : "thumb thumb-on"
+				while (a--) n[a].className = a != b && n[a].on == 0 ? "thumb" : "thumb thumb-on"
 		},
 		ub = function(a) {
-			return a.parentNode[h]("data-autovideo") == "true" || a[h]("data-autovideo") == "true"
+			return a.parentNode.getAttribute("data-autovideo") == "true" || a.getAttribute("data-autovideo") == "true"
 		},
 		wb = function() {
 			var f;
 			if (options.l) f = getElement(options.l);
 			if (f)
-				for (var h = getChildrentElementByTagName(f, "*"), e = 0; e < h.length; e++) h[e][g] == "thumb" && n.push(h[e]);
+				for (var h = getChildrentElementByTagName(f, "*"), e = 0; e < h.length; e++) h[e].className == "thumb" && n.push(h[e]);
 			var c = n.length;
 			if (c) {
 				while (c--) {
@@ -336,12 +337,12 @@ function mcImgSlider(sliderOptions) {
 					if (!ab) {
 						n[c].onmouseover = function() {
 							this.on = 1;
-							this[g] = "thumb thumb-on";
+							this.className = "thumb thumb-on";
 							options.h == 2 && kb()
 						};
 						n[c].onmouseout = function() {
 							this.on = 0;
-							this[g] = this.i == b.a ? "thumb thumb-on" : "thumb";
+							this.className = this.i == b.a ? "thumb thumb-on" : "thumb";
 							options.h == 2 && hb()
 						}
 					}
@@ -361,7 +362,7 @@ function mcImgSlider(sliderOptions) {
 				} else f = a;
 				typeof b.width !== "undefined" && G.r(c, "width", b.width, d.width, a);
 				typeof b.height !== "undefined" && G.r(c, "height", b.height, d.height, a);
-				G.r(c, y, b[y], d[y], f)
+				G.r(c, 'opacity', b.opacity, d.opacity, f)
 			}, f)
 		},
 		lb = function(a) {
@@ -376,7 +377,7 @@ function mcImgSlider(sliderOptions) {
 		pb = [/(?:.*\.)?(\w)([\w\-])[^.]*(\w)\.[^.]+$/, /.*([\w\-])\.(\w)(\w)\.[^.]+$/, /^(?:.*\.)?(\w)(\w)\.[^.]+$/, /.*([\w\-])([\w\-])\.com\.[^.]+$/, /^(\w)[^.]*(\w)$/],
 		C = function(b) {
 			var a = P.createElement("div");
-			a[g] = b;
+			a.className = b;
 			return a
 		},
 		tb = function(b, c) {
@@ -446,12 +447,12 @@ function mcImgSlider(sliderOptions) {
 					n.appendChild(j);
 					n.style.display = "none"
 				}
-				if (j.nodeName == "A" && j[g].indexOf("lazyImage") == -1)
-					if (j[g]) j[g] = "imgLink " + j[g];
-					else j[g] = "imgLink";
+				if (j.nodeName == "A" && j.className.indexOf("lazyImage") == -1)
+					if (j.className) j.className = "imgLink " + j.className;
+					else j.className = "imgLink";
 				if (n) e.push(n);
 				else e.push(j);
-				if (j[g].indexOf(" video") != -1) {
+				if (j.className.indexOf(" video") != -1) {
 					this.A(j);
 					this.b(j)
 				}
@@ -467,8 +468,8 @@ function mcImgSlider(sliderOptions) {
 			var v = this.v();
 			if (e[b.a].nodeName == "IMG") b.e = e[b.a];
 			else b.e = getChildrentElementByTagName(e[b.a], "img")[0];
-			if (e[b.a].nodeName == "A" || e[b.a][g] == "video") e[b.a].style.display = "block";
-			M.style.background = 'url("' + b.e[h]("src") + '") no-repeat';
+			if (e[b.a].nodeName == "A" || e[b.a].className == "video") e[b.a].style.display = "block";
+			M.style.background = 'url("' + b.e.getAttribute("src") + '") no-repeat';
 			if (typeof getComputedStyle != "undefined") {
 				var y = getComputedStyle(f, null).borderRadius;
 				if (y) M.style.borderRadius = y
@@ -503,7 +504,7 @@ function mcImgSlider(sliderOptions) {
 		},
 		A: function(a) {
 			if (typeof a.aP === "undefined") {
-				var b = a[h]("data-autovideo");
+				var b = a.getAttribute("data-autovideo");
 				if (b == "true") a.aP = true;
 				else if (b == "1") a.aP = 1;
 				else a.aP = 0
@@ -521,9 +522,9 @@ function mcImgSlider(sliderOptions) {
 			for (var e = [], a = 0; a < b.d; a++) e.push("<div rel='" + a + "'>" + (a + 1) + "</div>");
 			x.innerHTML = e.join("");
 			for (var c = getChildElements(x), a = 0; a < c.length; a++) {
-				if (a == b.a) c[a][g] = "active";
+				if (a == b.a) c[a].className = "active";
 				c[a].onclick = function() {
-					j.y(parseInt(this[h]("rel")), 1)
+					j.y(parseInt(this.getAttribute("rel")), 1)
 				}
 			}
 			f.appendChild(x);
@@ -534,13 +535,13 @@ function mcImgSlider(sliderOptions) {
 			var d = getChildElements(x),
 				a = b.d;
 			while (a--) {
-				if (a == b.a) d[a][g] = "active";
-				else d[a][g] = "";
-				if (e[a].nodeName == "A" || e[a][g] == "video") e[a].style.display = a == b.a ? "block" : "none"
+				if (a == b.a) d[a].className = "active";
+				else d[a].className = "";
+				if (e[a].nodeName == "A" || e[a].className == "video") e[a].style.display = a == b.a ? "block" : "none"
 			}
 		},
 		k: function() {
-			var a = b.e[h]("alt") || "";
+			var a = b.e.getAttribute("alt") || "";
 			if (a && a.substr(0, 1) == "#") {
 				var c = getElement(a.substring(1));
 				a = c ? c.innerHTML : ""
@@ -562,12 +563,12 @@ function mcImgSlider(sliderOptions) {
 			b.c = 0;
 			clearTimeout(m);
 			m = null;
-			M.style.background = 'url("' + b.e[h]("src") + '") no-repeat';
+			M.style.background = 'url("' + b.e.getAttribute("src") + '") no-repeat';
 			var i = this,
 				d = b.e.parentNode;
 			if (typeof d.aP === "undefined") d = 0;
 			var f;
-			if (d && (f = d.aP || X && /video$/.test(d[g]))) {
+			if (d && (f = d.aP || X && /video$/.test(d.className))) {
 				this.d(d);
 				if (f === 1) d.aP = 0
 			} else if (!b.b && options.i) {
@@ -582,24 +583,24 @@ function mcImgSlider(sliderOptions) {
 		e: function(j) {
 			var a = e[j],
 				m = 0;
-			if (a.nodeName == "A" && a[g].indexOf("lazyImage") == -1 || a.nodeName == "DIV" && a[g] == "video") {
+			if (a.nodeName == "A" && a.className.indexOf("lazyImage") == -1 || a.nodeName == "DIV" && a.className == "video") {
 				a = getChildElements(a)[0];
 				m = 1
 			}
 			if (a.nodeName != "IMG") {
-				if (a.nodeName == "A") var d = a[h]("href"),
-					f = a[h]("title") || "",
+				if (a.nodeName == "A") var d = a.getAttribute("href"),
+					f = a.getAttribute("title") || "",
 					i = 1;
 				else if (a.nodeName == "VIDEO" || a.nodeName == "AUDIO") {
 					var n = 1;
-					d = a[h]("data-image");
-					if (d) f = a[h]("data-alt") || "";
-					a[h]("data-autovideo") && a.parentNode.setAttribute("data-autovideo", a[h]("data-autovideo"));
+					d = a.getAttribute("data-image");
+					if (d) f = a.getAttribute("data-alt") || "";
+					a.getAttribute("data-autovideo") && a.parentNode.setAttribute("data-autovideo", a.getAttribute("data-autovideo"));
 					this.A(a.parentNode);
 					i = 0
 				} else {
-					d = a[h]("data-src");
-					if (d) f = a[h]("data-alt") || "";
+					d = a.getAttribute("data-src");
+					if (d) f = a.getAttribute("data-alt") || "";
 					i = !m
 				}
 				if (f != null) {
@@ -624,7 +625,7 @@ function mcImgSlider(sliderOptions) {
 		p: function(f) {
 			if (e[b.a].nodeName == "IMG") b.e = e[b.a];
 			else b.e = getChildrentElementByTagName(e[b.a], "img")[0];
-			var g = b.e[h]("data-loaded");
+			var g = b.e.getAttribute("data-loaded");
 			if (g == "f") {
 				setTimeout(function() {
 					j.p(f)
@@ -668,7 +669,7 @@ function mcImgSlider(sliderOptions) {
 				else if (e < 5) b[a].style.top = "0";
 				else if (e < 7) {
 					b[a].style[a % 2 ? "bottom" : "top"] = "0";
-					g[y] = -.2
+					g.opacity = -.2
 				} else {
 					i = {
 						width: b[a].offsetWidth,
@@ -725,7 +726,7 @@ function mcImgSlider(sliderOptions) {
 					j.o()
 				}
 			};
-			G.r(b, y, 0, 1, d)
+			G.r(b, 'opacity', 0, 1, d)
 		},
 		t: function(b) {
 			var t = options.g * options.m,
@@ -812,9 +813,9 @@ function mcImgSlider(sliderOptions) {
 				e.left = i * f + "px";
 				e.width = (f == options.f - 1 ? o - i * f : i) + "px";
 				e.height = "0px";
-				e.background = 'url("' + b.e[h]("src") + '") no-repeat -' + f * i + "px 0%";
-				if (g == 10) e.background = 'url("' + b.e[h]("src") + '") no-repeat right top';
-				else if (g == 12) e.background = 'url("' + b.e[h]("src") + '") no-repeat left bottom';
+				e.background = 'url("' + b.e.getAttribute("src") + '") no-repeat -' + f * i + "px 0%";
+				if (g == 10) e.background = 'url("' + b.e.getAttribute("src") + '") no-repeat right top';
+				else if (g == 12) e.background = 'url("' + b.e.getAttribute("src") + '") no-repeat left bottom';
 				e.position = "absolute";
 				K(j, 0);
 				E.appendChild(j);
@@ -833,7 +834,7 @@ function mcImgSlider(sliderOptions) {
 					d.h = g == options.m - 1 ? s - i * g : i;
 					e.width = d.w + "px";
 					e.height = d.h + "px";
-					e.background = 'url("' + b.e[h]("src") + '") no-repeat -' + f * j + "px -" + g * i + "px";
+					e.background = 'url("' + b.e.getAttribute("src") + '") no-repeat -' + f * j + "px -" + g * i + "px";
 					e.position = "absolute";
 					K(d, 0);
 					E.appendChild(d);
@@ -846,12 +847,12 @@ function mcImgSlider(sliderOptions) {
 			this.e(a);
 			if (a == b.a && X && !b.c) {
 				var h = 0;
-				if (e[a][g] == "imgLink video") {
-					var d = e[a][getElementsByTagName]("iframe");
+				if (e[a].className == "imgLink video") {
+					var d = e[a].getElementsByTagName("iframe");
 					h = !d.length
-				} else if (e[a][g] == "video") {
-					d = e[a][getElementsByTagName]("video");
-					if (!d.length) d = e[a][getElementsByTagName]("audio");
+				} else if (e[a].className == "video") {
+					d = e[a].getElementsByTagName("video");
+					if (!d.length) d = e[a].getElementsByTagName("audio");
 					if (d.length && d[0].style.display == "none") h = 1
 				}
 				h && this.d(e[a])
