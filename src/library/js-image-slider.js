@@ -103,9 +103,8 @@ function mcImgSlider(sliderOptions) {
 		height = "height",
 		top = "top",
 		B = "background",
-		p = "undefined",
-		Fb = "marginLeft",
-		F = "appendChild",
+		marginLeft = "marginLeft",
+		appendChild = "appendChild",
 		l = "parentNode",
 		k = "nodeName",
 		S = "innerHTML",
@@ -221,7 +220,7 @@ function mcImgSlider(sliderOptions) {
 		s: function(c, b) {
 			b = b || {};
 			var a, d = {};
-			for (a in c) d[a] = typeof b[a] !== p ? b[a] : c[a];
+			for (a in c) d[a] = typeof b[a] !== "undefined" ? b[a] : c[a];
 			return d
 		}
 	};
@@ -266,10 +265,10 @@ function mcImgSlider(sliderOptions) {
 				i: sliderOptions.autoAdvance,
 				l: sliderOptions.thumbnailsWrapperId,
 				Ob: function() {
-					sliderOptions.beforeSlideChange && typeof sliderOptions.beforeSlideChange !== p && sliderOptions.beforeSlideChange(arguments)
+					sliderOptions.beforeSlideChange && typeof sliderOptions.beforeSlideChange !== "undefined" && sliderOptions.beforeSlideChange(arguments)
 				},
 				Oa: function() {
-					sliderOptions.afterSlideChange && typeof sliderOptions.afterSlideChange !== p && sliderOptions.afterSlideChange(arguments)
+					sliderOptions.afterSlideChange && typeof sliderOptions.afterSlideChange !== "undefined" && sliderOptions.afterSlideChange(arguments)
 				}
 			};
 			if (f) a.m = Math.ceil(f.offsetHeight * a.g / f[cb]);
@@ -307,7 +306,7 @@ function mcImgSlider(sliderOptions) {
 				b = 0,
 				c;
 			while (a < e.length) {
-				c = e[a][g] == "lazyImage" || e[a][h]("data-src") || e[a][g][w](" video") > -1 && typeof McVideo != p;
+				c = e[a][g] == "lazyImage" || e[a][h]("data-src") || e[a][g][w](" video") > -1 && typeof McVideo != "undefined";
 				if (c) {
 					b = 1;
 					break
@@ -363,8 +362,8 @@ function mcImgSlider(sliderOptions) {
 					};
 					for (var h in a) f[h] = a[h]
 				} else f = a;
-				typeof b.width !== p && G.r(c, "width", b.width, d.width, a);
-				typeof b.height !== p && G.r(c, "height", b.height, d.height, a);
+				typeof b.width !== "undefined" && G.r(c, "width", b.width, d.width, a);
+				typeof b.height !== "undefined" && G.r(c, "height", b.height, d.height, a);
 				G.r(c, y, b[y], d[y], f)
 			}, f)
 		},
@@ -447,7 +446,7 @@ function mcImgSlider(sliderOptions) {
 					j.style.position = "absolute";
 					n = C("video");
 					j[l].insertBefore(n, j);
-					n[F](j);
+					n.appendChild(j);
 					n.style.display = "none"
 				}
 				if (j[k] == "A" && j[g][w]("lazyImage") == -1)
@@ -464,9 +463,9 @@ function mcImgSlider(sliderOptions) {
 			b.d = e[length];
 			a.m = Math.ceil(s * a.g / o);
 			E = C("sliderInner");
-			f[F](E);
+			f.appendChild(E);
 			A = C("mc-caption");
-			f[F](A);
+			f.appendChild(A);
 			A.style.transition = "opacity " + a.c + "ms";
 			var v = this.v();
 			if (e[b.a][k] == "IMG") b.e = e[b.a];
@@ -506,7 +505,7 @@ function mcImgSlider(sliderOptions) {
 			// }
 		},
 		A: function(a) {
-			if (typeof a.aP === p) {
+			if (typeof a.aP === "undefined") {
 				var b = a[h]("data-autovideo");
 				if (b == "true") a.aP = true;
 				else if (b == "1") a.aP = 1;
@@ -530,7 +529,7 @@ function mcImgSlider(sliderOptions) {
 					j.y(parseInt(this[h]("rel")), 1)
 				}
 			}
-			f[F](x);
+			f.appendChild(x);
 			M = C("bgLayer");
 			f.insertBefore(M, f.firstChild)
 		},
@@ -569,7 +568,7 @@ function mcImgSlider(sliderOptions) {
 			M.style[B] = 'url("' + b.e[h]("src") + '") no-repeat';
 			var i = this,
 				d = b.e[l];
-			if (typeof d.aP === p) d = 0;
+			if (typeof d.aP === "undefined") d = 0;
 			var f;
 			if (d && (f = d.aP || X && /video$/.test(d[g]))) {
 				this.d(d);
@@ -821,7 +820,7 @@ function mcImgSlider(sliderOptions) {
 				else if (g == 12) e[B] = 'url("' + b.e[h]("src") + '") no-repeat left bottom';
 				e.position = "absolute";
 				K(j, 0);
-				E[F](j);
+				E.appendChild(j);
 				k[k[length]] = j
 			}
 			return k
@@ -840,7 +839,7 @@ function mcImgSlider(sliderOptions) {
 					e[B] = 'url("' + b.e[h]("src") + '") no-repeat -' + f * j + "px -" + g * i + "px";
 					e.position = "absolute";
 					K(d, 0);
-					E[F](d);
+					E.appendChild(d);
 					k.push(d)
 				}
 			return k
