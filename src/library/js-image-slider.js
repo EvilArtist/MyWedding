@@ -96,12 +96,12 @@ function mcImgSlider(sliderOptions) {
 				} else a.addRule("#" + sliderOptions.sliderId + " .bgLayer", "position:absolute;width:100%;height:100%;")
 		};
 	sb();
-	var c = "style",
-		H = "display",
-		Eb = "visibility",
-		r = "width",
-		q = "height",
-		O = "top",
+	var style = "style",
+		display = "display",
+		visibility = "visibility",
+		width = "width",
+		height = "height",
+		top = "top",
 		B = "background",
 		p = "undefined",
 		Fb = "marginLeft",
@@ -133,8 +133,8 @@ function mcImgSlider(sliderOptions) {
 		K = function(a, b) {
 			if (a) {
 				a.o = b;
-				if (T) a[c].filter = "alpha(opacity=" + b * 100 + ")";
-				else a[c][y] = b
+				if (T) a.style.filter = "alpha(opacity=" + b * 100 + ")";
+				else a.style[y] = b
 			}
 		};
 	L.a = {
@@ -203,7 +203,7 @@ function mcImgSlider(sliderOptions) {
 						b = "alpha(opacity=" + Math.round(b * 100) + ")"
 					}
 				} else b += "px";
-				a.a[c][e] = b;
+				a.a.style[e] = b;
 				a.d.e++
 			}
 		},
@@ -363,8 +363,8 @@ function mcImgSlider(sliderOptions) {
 					};
 					for (var h in a) f[h] = a[h]
 				} else f = a;
-				typeof b[r] !== p && G.r(c, "width", b[r], d[r], a);
-				typeof b[q] !== p && G.r(c, "height", b[q], d[q], a);
+				typeof b.width !== p && G.r(c, "width", b.width, d.width, a);
+				typeof b.height !== p && G.r(c, "height", b.height, d.height, a);
 				G.r(c, y, b[y], d[y], f)
 			}, f)
 		},
@@ -442,13 +442,13 @@ function mcImgSlider(sliderOptions) {
 			while (G--) {
 				j = r[G];
 				n = 0;
-				j[c][H] = "none";
+				j.style.display = "none";
 				if (j[k] == "VIDEO" || j[k] == "AUDIO") {
-					j[c].position = "absolute";
+					j.style.position = "absolute";
 					n = C("video");
 					j[l].insertBefore(n, j);
 					n[F](j);
-					n[c][H] = "none"
+					n.style.display = "none"
 				}
 				if (j[k] == "A" && j[g][w]("lazyImage") == -1)
 					if (j[g]) j[g] = "imgLink " + j[g];
@@ -467,15 +467,15 @@ function mcImgSlider(sliderOptions) {
 			f[F](E);
 			A = C("mc-caption");
 			f[F](A);
-			A[c].transition = "opacity " + a.c + "ms";
+			A.style.transition = "opacity " + a.c + "ms";
 			var v = this.v();
 			if (e[b.a][k] == "IMG") b.e = e[b.a];
 			else b.e = getChildrentElementByTagName(e[b.a], "img")[0];
-			if (e[b.a][k] == "A" || e[b.a][g] == "video") e[b.a][c][H] = "block";
-			M[c][B] = 'url("' + b.e[h]("src") + '") no-repeat';
+			if (e[b.a][k] == "A" || e[b.a][g] == "video") e[b.a].style.display = "block";
+			M.style[B] = 'url("' + b.e[h]("src") + '") no-repeat';
 			if (typeof getComputedStyle != "undefined") {
 				var y = getComputedStyle(f, null).borderRadius;
-				if (y) M[c].borderRadius = y
+				if (y) M.style.borderRadius = y
 			}
 			D = this.k();
 			this.m();
@@ -540,7 +540,7 @@ function mcImgSlider(sliderOptions) {
 			while (a--) {
 				if (a == b.a) d[a][g] = "active";
 				else d[a][g] = "";
-				if (e[a][k] == "A" || e[a][g] == "video") e[a][c][H] = a == b.a ? "block" : "none"
+				if (e[a][k] == "A" || e[a][g] == "video") e[a].style.display = a == b.a ? "block" : "none"
 			}
 		},
 		k: function() {
@@ -556,7 +556,7 @@ function mcImgSlider(sliderOptions) {
 		},
 		m: function() {
 			A[S] = D;
-			A[c][Eb] = D ? "visible" : "hidden";
+			A.style.visibility = D ? "visible" : "hidden";
 			D && K(A, 1)
 		},
 		a: function(a) {
@@ -566,7 +566,7 @@ function mcImgSlider(sliderOptions) {
 			b.c = 0;
 			z(m);
 			m = null;
-			M[c][B] = 'url("' + b.e[h]("src") + '") no-repeat';
+			M.style[B] = 'url("' + b.e[h]("src") + '") no-repeat';
 			var i = this,
 				d = b.e[l];
 			if (typeof d.aP === p) d = 0;
@@ -612,13 +612,13 @@ function mcImgSlider(sliderOptions) {
 					b[N]("alt", f);
 					b.onload = b.onerror = vb;
 					b[N]("src", d);
-					b[c][H] = "none";
+					b.style.display = "none";
 					if (n) {
 						a[l].insertBefore(b, a);
 						this.b(a[l], this);
 						if (T) {
-							a[l][c][B] = "none";
-							a[l][c].cursor = "default"
+							a[l].style[B] = "none";
+							a[l].style.cursor = "default"
 						}
 					} else a[l].replaceChild(b, a);
 					if (i) e[j] = b
@@ -668,18 +668,18 @@ function mcImgSlider(sliderOptions) {
 					height: s,
 					opacity: 1
 				}, a = 0, h = b[length]; a < h; a++) {
-				if (e < 3) b[a][c].bottom = "0";
-				else if (e < 5) b[a][c][O] = "0";
+				if (e < 3) b[a].style.bottom = "0";
+				else if (e < 5) b[a].style.top = "0";
 				else if (e < 7) {
-					b[a][c][a % 2 ? "bottom" : "top"] = "0";
+					b[a].style[a % 2 ? "bottom" : "top"] = "0";
 					g[y] = -.2
 				} else {
 					i = {
 						width: b[a][cb],
 						opacity: 1
 					};
-					b[a][c][r] = b[a][c][O] = "0";
-					b[a][c][q] = s + "px"
+					b[a].style.width = b[a].style.top = "0";
+					b[a].style.height = s + "px"
 				}
 				eb({}, h, a, b[a], g, i, f);
 				f += 50
@@ -696,14 +696,14 @@ function mcImgSlider(sliderOptions) {
 			} catch (c) {}
 		},
 		r: function(d, b) {
-			d[c][r] = b < 11 ? "0px" : o + "px";
-			d[c][q] = b < 11 ? s + "px" : "0px";
+			d.style.width = b < 11 ? "0px" : o + "px";
+			d.style.height = b < 11 ? s + "px" : "0px";
 			K(d, 1);
-			if (b < 11) d[c][O] = "0";
+			if (b < 11) d.style.top = "0";
 			if (b == 9) {
-				d[c].left = "auto";
-				d[c].right = "0px"
-			} else if (b > 10) d[c][b == 11 ? "bottom" : "top"] = "0";
+				d.style.left = "auto";
+				d.style.right = "0px"
+			} else if (b > 10) d.style[b == 11 ? "bottom" : "top"] = "0";
 			if (b < 11) var e = 0,
 				f = o;
 			else {
@@ -720,9 +720,9 @@ function mcImgSlider(sliderOptions) {
 			G.r(d, b < 11 ? "width" : "height", e, f, g)
 		},
 		s: function(b) {
-			b[c][O] = "0";
-			b[c][r] = o + "px";
-			b[c][q] = s + "px";
+			b.style.top = "0";
+			b.style.width = o + "px";
+			b.style.height = s + "px";
 			var d = {
 				c: a.c * 1.6,
 				a: function() {
@@ -740,7 +740,7 @@ function mcImgSlider(sliderOptions) {
 				f = [];
 			f[0] = [];
 			for (var e = 0, n = b[length]; e < n; e++) {
-				b[e][c][r] = b[e][c][q] = "0px";
+				b[e].style.width = b[e].style.height = "0px";
 				f[i][g] = b[e];
 				g++;
 				if (g == a.g) {
@@ -776,7 +776,7 @@ function mcImgSlider(sliderOptions) {
 			for (var f = 0, b = 0, j = a[length]; b < j; b++) {
 				var e = a[b];
 				if (i == 16) {
-					a[b][c][r] = a[b][c][q] = "0px";
+					a[b].style.width = a[b].style.height = "0px";
 					var g = {
 							width: 0,
 							height: 0,
@@ -812,10 +812,10 @@ function mcImgSlider(sliderOptions) {
 		w: function(g) {
 			for (var k = [], i = g > 8 ? o : Math.round(o / a.f), l = g > 8 ? 1 : a.f, f = 0; f < l; f++) {
 				var j = C("mcSlc"),
-					e = j[c];
+					e = j.style;
 				e.left = i * f + "px";
-				e[r] = (f == a.f - 1 ? o - i * f : i) + "px";
-				e[q] = "0px";
+				e.width = (f == a.f - 1 ? o - i * f : i) + "px";
+				e.height = "0px";
 				e[B] = 'url("' + b.e[h]("src") + '") no-repeat -' + f * i + "px 0%";
 				if (g == 10) e[B] = 'url("' + b.e[h]("src") + '") no-repeat right top';
 				else if (g == 12) e[B] = 'url("' + b.e[h]("src") + '") no-repeat left bottom';
@@ -830,13 +830,13 @@ function mcImgSlider(sliderOptions) {
 			for (var k = [], j = Math.round(o / a.g), i = Math.round(s / a.m), g = 0; g < a.m; g++)
 				for (var f = 0; f < a.g; f++) {
 					var d = C("mcBox"),
-						e = d[c];
+						e = d.style;
 					e.left = j * f + "px";
-					e[O] = i * g + "px";
+					e.top = i * g + "px";
 					d.w = f == a.g - 1 ? o - j * f : j;
 					d.h = g == a.m - 1 ? s - i * g : i;
-					e[r] = d.w + "px";
-					e[q] = d.h + "px";
+					e.width = d.w + "px";
+					e.height = d.h + "px";
 					e[B] = 'url("' + b.e[h]("src") + '") no-repeat -' + f * j + "px -" + g * i + "px";
 					e.position = "absolute";
 					K(d, 0);
@@ -856,7 +856,7 @@ function mcImgSlider(sliderOptions) {
 				} else if (e[a][g] == "video") {
 					d = e[a][getElementsByTagName]("video");
 					if (!d.length) d = e[a][getElementsByTagName]("audio");
-					if (d.length && d[0][c][H] == "none") h = 1
+					if (d.length && d[0].style.display == "none") h = 1
 				}
 				h && this.d(e[a])
 			}
