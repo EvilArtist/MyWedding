@@ -1,0 +1,26 @@
+.img-container.animated.slide-to-right, .img-container.animated.slide-to-left {
+    top: 0;
+}
+
+.img-container.animated.slide-to-bottom, .img-container.animated.slide-to-top {
+    left: 0;
+    right: 0;
+}
+
+.img-container.creative-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.img-container.animated.left-side, .img-container.animated.right-side {
+    width: 50%;
+    overflow: hidden;
+}
+.img-container.left-side img, .img-container.right-side img {
+    width: 200%;
+}
+.right-side img {
+    transform: translateX(-50%);
+}
