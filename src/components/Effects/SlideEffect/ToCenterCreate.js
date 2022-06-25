@@ -7,10 +7,10 @@ function ToCenterCreate(props) {
     
     const leftSideProp = useSpring({
         from: {
-            left: "-50%"
+            left: "0%"
         },
         to: {
-            left: "0"
+            left: "-50%"
         },
         delay: props.delay || 2000,
         config: {
@@ -19,28 +19,24 @@ function ToCenterCreate(props) {
     });
     const rightSideProp = useSpring({
         from: {
-            left: "100%"
+            left: "50%"
         },
         to: {
-            left: "50%"
+            left: "100%"
         },
         delay: props.delay || 2000,
         config: {
             duration: props.duration || 500,
-        },
-        onRest: () => {
-            console.log("Complete");
-            props.onTransitionEnded && props.onTransitionEnded();
         }
     });
     const zoomInSideProp = useSpring({
         from: {
-            transform: "100%"
+            transform: "translate(-50%, -50%) scale(0)"
         },
         to: {
-            left: "50%"
+            transform: "translate(-50%, -50%) scale(1)"
         },
-        delay: props.delay || 2000,
+        delay: (props.delay || 2000) + 20,
         config: {
             duration: props.duration || 500,
         },
@@ -51,14 +47,14 @@ function ToCenterCreate(props) {
     });
     return (
         <div className="effect-container">
-            <img src={props.image[0]} alt="background" className='currentImage' />
-            <animated.div className="img-container animated left-side creative-background" style={leftSideProp}>
-                <img src={props.image[0]} alt="background" className='nextImage' />
-            </animated.div>
+            <img src={props.image[1]} alt="background" className='blur-background' />
             <animated.div className="img-container animated left-side fly-in slide-to-left" style={leftSideProp}>
-                <img src={props.image[1]} alt="background" className='nextImage' />
+                <img src={props.image[0]} alt="background" className='background' />
             </animated.div>
             <animated.div className="img-container animated right-side fly-in slide-to-right" style={rightSideProp}>
+                <img src={props.image[0]} alt="background" className='background' />
+            </animated.div>
+            <animated.div className="img-container animated creative-background" style={zoomInSideProp}>
                 <img src={props.image[1]} alt="background" className='nextImage' />
             </animated.div>
         </div>

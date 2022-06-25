@@ -11,7 +11,7 @@ class TestComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            effect: 1,
+            effect: getRndInteger(0, effectsCount - 1),
             activeIndex: 0,
             slideImage: [
                 this.images[0],
@@ -24,6 +24,7 @@ class TestComponent extends React.Component {
         while (effect === this.state.effect) {
             effect = getRndInteger(0, effectsCount - 1);
         }
+        
         let activeIndex = this.state.activeIndex + 1;
         if (activeIndex >= this.images.length) {
             activeIndex = 0;
@@ -49,7 +50,9 @@ class TestComponent extends React.Component {
                 <div className='gallery'>
                     <GetEffect effect={this.state.effect} 
                         images={this.state.slideImage}
-                        onTransitionEnded={this.toggleEffect}/>
+                        onTransitionEnded={this.toggleEffect}
+                        delay={2200}
+                        duration={1000}/>
                 </div>
                 <button onClick={this.toggleEffect}>
                   Change effect
@@ -63,23 +66,35 @@ function GetEffect(props) {
     const effect = props.effect;
 
     if (effect === 0) {
-        return <Slide.LeftToRight image={props.images} onTransitionEnded={props.onTransitionEnded}/>
+        return <Slide.LeftToRight delay={props.delay} duration={props.duration}
+            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
     } if (effect === 1) {
-        return <Slide.RightToLeft image={props.images} onTransitionEnded={props.onTransitionEnded}/>
+        return <Slide.RightToLeft delay={props.delay} duration={props.duration} 
+            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
     } if (effect === 2) {
-        return <Slide.TopToBottom image={props.images} onTransitionEnded={props.onTransitionEnded}/>
+        return <Slide.TopToBottom delay={props.delay} duration={props.duration} 
+            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
     } if (effect === 3) {
-        return <Slide.BottomToTop image={props.images} onTransitionEnded={props.onTransitionEnded}/>
+        return <Slide.BottomToTop delay={props.delay} duration={props.duration} 
+            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
     } if (effect === 4) {
-        return <Opacity.SatureEffect image={props.images} onTransitionEnded={props.onTransitionEnded}/>
+        return <Opacity.SatureEffect delay={props.delay} duration={props.duration} 
+            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
     } if (effect === 5) {
-        return <Opacity.FadeEffect image={props.images} onTransitionEnded={props.onTransitionEnded}/>
+        return <Opacity.FadeEffect delay={props.delay} duration={props.duration} 
+            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
     } if (effect === 6) {
-        return <Slide.LeftToRightCreate image={props.images} onTransitionEnded={props.onTransitionEnded}/>
+        return <Slide.LeftToRightCreate delay={props.delay} duration={props.duration} 
+            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
     } if (effect === 7) {
-        return <Slide.RightToLeftCreate image={props.images} onTransitionEnded={props.onTransitionEnded}/>
+        return <Slide.RightToLeftCreate delay={props.delay} duration={props.duration} 
+            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
     } if (effect === 8) {
-        return <Slide.ToCenter image={props.images} onTransitionEnded={props.onTransitionEnded}/>
+        return <Slide.ToCenter delay={props.delay} duration={props.duration} 
+            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
+    }if (effect === 9) {
+        return <Slide.ToCenterCreate delay={props.delay} duration={props.duration} 
+            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
     }
     else {
         return <div>Select Effect 2 </div>

@@ -17,3 +17,7 @@ img {
 .img-container.animated {
     position: absolute;
 }
+
+.blur-background {
+    filter: blur(5px);
+}

@@ -36,7 +36,7 @@ function FadeEffect(props) {
 
     return (
         <div className="effect-container">
-            <img src={props.image[0]} alt="background" className='currentImage' style={{opacity: 0}}/>
+            <img src={props.image[0]} alt="background" className='blur-background' />
             <animated.div className="img-container animated opacity fadePit" style={outProp}>
                 <img src={props.image[0]} alt="background" className='currentImage' />
             </animated.div>

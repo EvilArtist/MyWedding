@@ -29,12 +29,12 @@ function RightToLeftCreate(props) {
         },
         delay: props.delay || 2000,
         config: {
-            duration: 2 * ( props.duration || 500 ),
+            duration: props.duration || 500,
         }
     });
     return (
         <div className="effect-container">
-            <img src={props.image[0]} alt="background" className='currentImage' style={{opacity: 0}}/>
+        <img src={props.image[0]} alt="background" className='blur-background' />
             <animated.div className="img-container animated creative-background" style={backgroundProp}>
                 <img src={props.image[0]} alt="background" className='currentImage' />
             </animated.div>

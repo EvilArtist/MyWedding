@@ -7,8 +7,9 @@ import SatureEffect from "./OpacityEffect/SatureEffect";
 import FadeEffect from "./OpacityEffect/FadeEffect";
 import RightToLeftCreate from "./SlideEffect/RightToLeftCreate";
 import ToCenter from "./SlideEffect/ToCenter";
+import ToCenterCreate from "./SlideEffect/ToCenterCreate"; 
 
-export const count = 9;
+export const count = 10;
 export const Slide = {
     LeftToRight,
     RightToLeft,
@@ -16,7 +17,8 @@ export const Slide = {
     BottomToTop,
     LeftToRightCreate,
     RightToLeftCreate,
-    ToCenter
+    ToCenter,
+    ToCenterCreate
 };
 export const Opacity = {
     SatureEffect,
