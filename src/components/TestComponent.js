@@ -1,5 +1,5 @@
 import React from 'react';
-import {Slide, count as effectsCount, Opacity} from './Effects/effect';
+import {Slide, count as effectsCount, Opacity, Column} from './Effects/effect';
 class TestComponent extends React.Component {
     images = [
         "https://cdn2.wanderlust.co.uk/media/1006/shutterstock_1724207551.jpg",
@@ -68,40 +68,56 @@ function GetEffect(props) {
     if (effect === 0) {
         return <Slide.LeftToRight delay={props.delay} duration={props.duration}
             image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } if (effect === 1) {
+    } else if (effect === 1) {
         return <Slide.RightToLeft delay={props.delay} duration={props.duration} 
             image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } if (effect === 2) {
+    } else if (effect === 2) {
         return <Slide.TopToBottom delay={props.delay} duration={props.duration} 
             image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } if (effect === 3) {
+    } else if (effect === 3) {
         return <Slide.BottomToTop delay={props.delay} duration={props.duration} 
             image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } if (effect === 4) {
+    } else if (effect === 4) {
         return <Opacity.SatureEffect delay={props.delay} duration={props.duration} 
             image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } if (effect === 5) {
+    } else if (effect === 5) {
         return <Opacity.FadeEffect delay={props.delay} duration={props.duration} 
             image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } if (effect === 6) {
+    } else if (effect === 6) {
         return <Slide.LeftToRightCreate delay={props.delay} duration={props.duration} 
             image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } if (effect === 7) {
+    } else if (effect === 7) {
         return <Slide.RightToLeftCreate delay={props.delay} duration={props.duration} 
             image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } if (effect === 8) {
+    } else if (effect === 8) {
         return <Slide.ToCenter delay={props.delay} duration={props.duration} 
             image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    }if (effect === 9) {
+    } else if (effect === 9) {
         return <Slide.ToCenterCreate delay={props.delay} duration={props.duration} 
             image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    }
-    else {
-        return <div>Select Effect 2 </div>
+    } else if (effect === 10) {
+        return <Column.SlideToRight delay={props.delay} duration={props.duration} 
+        image={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
+    } else if (effect === 10) {
+        return <Column.SlideToRight delay={props.delay} duration={props.duration} 
+        image={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
+    } else if (effect === 11) {
+        return <Column.SlideToLeft delay={props.delay} duration={props.duration} 
+        image={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
+    } else if (effect === 12) {
+        return <Column.DownToLeft delay={props.delay} duration={props.duration} 
+        image={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
+    } else if (effect === 13){
+        return <Column.DownToRight delay={props.delay} duration={props.duration} 
+        image={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
+    } else {
+        return <Column.DownToRight delay={props.delay} duration={props.duration} 
+        image={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
     }
 }
 
 function getRndInteger(min, max) {
+    //return  Math.floor(Math.random() * (13 - 10 + 1) ) + 10
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 export default TestComponent;

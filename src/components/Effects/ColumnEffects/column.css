@@ -1,0 +1,19 @@
+.column {
+    overflow: hidden;
+}
+
+.columns-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.img-container.column {
+    top: 0;
+    bottom: 0;
+}
+
+.columns-container img {
+    position: absolute;
+}
