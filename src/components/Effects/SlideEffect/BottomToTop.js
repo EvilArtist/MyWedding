@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated, easings } from 'react-spring';
 import "./slide.css";
 import "../effect.css";
 
@@ -15,6 +15,7 @@ function BottomToTop(props) {
         delay: props.delay || 2000,
         config: {
             duration: props.duration || 500,
+            easing: easings.easeInOutQuart,
         },
         onRest: () => {
             props.onTransitionEnded && props.onTransitionEnded();
@@ -23,10 +24,10 @@ function BottomToTop(props) {
     return (
         <div className="effect-container">
             <div className="img-container">
-                <img src={props.image[0]} alt="background" className='currentImage' />
+                <img src={props.images[0]} alt="background" className='currentImage' />
             </div>
             <animated.div className="img-container animated fly-in slide-to-top" style={springProp}>
-                <img src={props.image[1]} alt="background" className='nextImage' />
+                <img src={props.images[1]} alt="background" className='nextImage' />
             </animated.div>
         </div>
     );

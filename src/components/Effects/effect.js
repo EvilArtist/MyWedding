@@ -34,3 +34,57 @@ export const Opacity = {
     SatureEffect,
     FadeEffect
 }
+
+export function Effect(props) {
+    const effect = props.effect;
+
+    if (effect === 0) {
+        return <Slide.LeftToRight delay={props.delay} duration={props.duration}
+            images={props.images} onTransitionEnded={props.onTransitionEnded}/>
+    } else if (effect === 1) {
+        return <Slide.RightToLeft delay={props.delay} duration={props.duration} 
+            images={props.images} onTransitionEnded={props.onTransitionEnded}/>
+    } else if (effect === 2) {
+        return <Slide.TopToBottom delay={props.delay} duration={props.duration} 
+            images={props.images} onTransitionEnded={props.onTransitionEnded}/>
+    } else if (effect === 3) {
+        return <Slide.BottomToTop delay={props.delay} duration={props.duration} 
+            images={props.images} onTransitionEnded={props.onTransitionEnded}/>
+    } else if (effect === 4) {
+        return <Opacity.SatureEffect delay={props.delay} duration={props.duration} 
+            images={props.images} onTransitionEnded={props.onTransitionEnded}/>
+    } else if (effect === 5) {
+        return <Opacity.FadeEffect delay={props.delay} duration={props.duration} 
+            images={props.images} onTransitionEnded={props.onTransitionEnded}/>
+    } else if (effect === 6) {
+        return <Slide.LeftToRightCreate delay={props.delay} duration={props.duration} 
+            images={props.images} onTransitionEnded={props.onTransitionEnded}/>
+    } else if (effect === 7) {
+        return <Slide.RightToLeftCreate delay={props.delay} duration={props.duration} 
+            images={props.images} onTransitionEnded={props.onTransitionEnded}/>
+    } else if (effect === 8) {
+        return <Slide.ToCenter delay={props.delay} duration={props.duration} 
+            images={props.images} onTransitionEnded={props.onTransitionEnded}/>
+    } else if (effect === 9) {
+        return <Slide.ToCenterCreate delay={props.delay} duration={props.duration} 
+            images={props.images} onTransitionEnded={props.onTransitionEnded}/>
+    } else if (effect === 10) {
+        return <Column.SlideToRight delay={props.delay} duration={props.duration} 
+        images={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
+    } else if (effect === 10) {
+        return <Column.SlideToRight delay={props.delay} duration={props.duration} 
+        images={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
+    } else if (effect === 11) {
+        return <Column.SlideToLeft delay={props.delay} duration={props.duration} 
+        images={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
+    } else if (effect === 12) {
+        return <Column.DownToLeft delay={props.delay} duration={props.duration} 
+        images={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
+    } else if (effect === 13){
+        return <Column.DownToRight delay={props.delay} duration={props.duration} 
+        images={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
+    } else {
+        return <Column.DownToRight delay={props.delay} duration={props.duration} 
+        images={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
+    }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated, easings } from 'react-spring';
 import "./opacity.css";
 import "../effect.css";
 
@@ -27,6 +27,7 @@ function FadeEffect(props) {
         delay: props.delay || 2000,
         config: {
             duration: props.duration || 500,
+            easing: easings.easeInOutQuart,
         },
         onRest: () => {
             console.log('Complete');
@@ -36,12 +37,12 @@ function FadeEffect(props) {
 
     return (
         <div className="effect-container">
-            <img src={props.image[0]} alt="background" className='blur-background' />
+            <img src={props.images[0]} alt="background" className='blur-background' />
             <animated.div className="img-container animated opacity fadePit" style={outProp}>
-                <img src={props.image[0]} alt="background" className='currentImage' />
+                <img src={props.images[0]} alt="background" className='currentImage' />
             </animated.div>
             <animated.div className="img-container animated opacity fadeIn" style={inProp}>
-                <img src={props.image[1]} alt="background" className='nextImage' />
+                <img src={props.images[1]} alt="background" className='nextImage' />
             </animated.div>
         </div>
     );

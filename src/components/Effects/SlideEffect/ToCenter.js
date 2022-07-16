@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated, easings } from 'react-spring';
 import "./slide.css";
 import "../effect.css";
 
@@ -15,6 +15,7 @@ function ToCenter(props) {
         delay: props.delay || 2000,
         config: {
             duration: props.duration || 500,
+            easing: easings.easeInOutQuart,
         },
     });
     const rightSideProp = useSpring({
@@ -27,6 +28,7 @@ function ToCenter(props) {
         delay: props.delay || 2000,
         config: {
             duration: props.duration || 500,
+            easing: easings.easeInOutQuart,
         },
         onRest: () => {
             console.log("Complete");
@@ -36,13 +38,13 @@ function ToCenter(props) {
     return (
         <div className="effect-container">
             <div className="img-container">
-                <img src={props.image[0]} alt="background" className='currentImage' />
+                <img src={props.images[0]} alt="background" className='currentImage' />
             </div>
             <animated.div className="img-container animated left-side fly-in slide-to-left" style={leftSideProp}>
-                <img src={props.image[1]} alt="background" className='nextImage' />
+                <img src={props.images[1]} alt="background" className='nextImage' />
             </animated.div>
             <animated.div className="img-container animated right-side fly-in slide-to-right" style={rightSideProp}>
-                <img src={props.image[1]} alt="background" className='nextImage' />
+                <img src={props.images[1]} alt="background" className='nextImage' />
             </animated.div>
         </div>
     );

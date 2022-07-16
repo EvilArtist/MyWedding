@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated, easings } from 'react-spring';
 import "./slide.css";
 import "../effect.css";
 
@@ -15,6 +15,7 @@ function LeftToRightCreate(props) {
         delay: (props.delay || 2000) + (props.duration || 500),
         config: {
             duration: props.duration || 500,
+            easing: easings.easeInOutQuart,
         },
         onRest: () => {
             props.onTransitionEnded && props.onTransitionEnded();
@@ -30,16 +31,17 @@ function LeftToRightCreate(props) {
         delay: props.delay || 2000,
         config: {
             duration: 2 * ( props.duration || 500 ),
+            easing: easings.easeInOutQuart,
         }
     });
     return (
         <div className="effect-container">
-        <img src={props.image[0]} alt="background" className='blur-background' />
+        <img src={props.images[0]} alt="background" className='blur-background' />
             <animated.div className="img-container animated creative-background" style={backgroundProp}>
-                <img src={props.image[0]} alt="background" className='currentImage' />
+                <img src={props.images[0]} alt="background" className='currentImage' />
             </animated.div>
             <animated.div className="img-container animated fly-in slide-to-right" style={springProp}>
-                <img src={props.image[1]} alt="background" className='nextImage' />
+                <img src={props.images[1]} alt="background" className='nextImage' />
             </animated.div>
         </div>
     );

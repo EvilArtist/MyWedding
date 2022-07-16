@@ -1,5 +1,5 @@
 import React from 'react';
-import {Slide, count as effectsCount, Opacity, Column} from './Effects/effect';
+import {Effect, count as effectsCount} from './Effects/effect';
 class TestComponent extends React.Component {
     images = [
         "https://cdn2.wanderlust.co.uk/media/1006/shutterstock_1724207551.jpg",
@@ -48,7 +48,7 @@ class TestComponent extends React.Component {
             <div>
                 <h1>Test Component {this.state.effect}</h1>
                 <div className='gallery'>
-                    <GetEffect effect={this.state.effect} 
+                    <Effect effect={this.state.effect} 
                         images={this.state.slideImage}
                         onTransitionEnded={this.toggleEffect}
                         delay={2200}
@@ -59,60 +59,6 @@ class TestComponent extends React.Component {
                 </button>
             </div>
         );
-    }
-}
-
-function GetEffect(props) {
-    const effect = props.effect;
-
-    if (effect === 0) {
-        return <Slide.LeftToRight delay={props.delay} duration={props.duration}
-            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } else if (effect === 1) {
-        return <Slide.RightToLeft delay={props.delay} duration={props.duration} 
-            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } else if (effect === 2) {
-        return <Slide.TopToBottom delay={props.delay} duration={props.duration} 
-            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } else if (effect === 3) {
-        return <Slide.BottomToTop delay={props.delay} duration={props.duration} 
-            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } else if (effect === 4) {
-        return <Opacity.SatureEffect delay={props.delay} duration={props.duration} 
-            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } else if (effect === 5) {
-        return <Opacity.FadeEffect delay={props.delay} duration={props.duration} 
-            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } else if (effect === 6) {
-        return <Slide.LeftToRightCreate delay={props.delay} duration={props.duration} 
-            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } else if (effect === 7) {
-        return <Slide.RightToLeftCreate delay={props.delay} duration={props.duration} 
-            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } else if (effect === 8) {
-        return <Slide.ToCenter delay={props.delay} duration={props.duration} 
-            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } else if (effect === 9) {
-        return <Slide.ToCenterCreate delay={props.delay} duration={props.duration} 
-            image={props.images} onTransitionEnded={props.onTransitionEnded}/>
-    } else if (effect === 10) {
-        return <Column.SlideToRight delay={props.delay} duration={props.duration} 
-        image={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
-    } else if (effect === 10) {
-        return <Column.SlideToRight delay={props.delay} duration={props.duration} 
-        image={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
-    } else if (effect === 11) {
-        return <Column.SlideToLeft delay={props.delay} duration={props.duration} 
-        image={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
-    } else if (effect === 12) {
-        return <Column.DownToLeft delay={props.delay} duration={props.duration} 
-        image={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
-    } else if (effect === 13){
-        return <Column.DownToRight delay={props.delay} duration={props.duration} 
-        image={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
-    } else {
-        return <Column.DownToRight delay={props.delay} duration={props.duration} 
-        image={props.images} onTransitionEnded={props.onTransitionEnded} numberOfCols={8}/>
     }
 }
 
