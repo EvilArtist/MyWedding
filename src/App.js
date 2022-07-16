@@ -1,5 +1,6 @@
 import './App.css';
 import ImageSlider from "./components/ImageSliders";
+import InvitationCard from "./components/InvitationCard";
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <header className="App-header">
       </header>
         <ImageSlider />
+        <InvitationCard />
     </div>
   );
 }
