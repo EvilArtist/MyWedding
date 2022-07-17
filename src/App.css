@@ -2,3 +2,11 @@
     width: 100%;
     height: auto;
 }
+
+.invitation-card {
+    height: 800px;
+    width: 100%;
+    padding: 100px 0;
+    background: linear-gradient(45deg, #DEB7B9 0%, #A3515D 100%);
+    perspective: 200px;
+}

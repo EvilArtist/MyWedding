@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'SVN-Fiolex Girls';
+    font-weight: normal;
+    font-style: normal;
+    src: url(./fonts/SVN-Fiolex\ Girls.ttf);
+}
+
+@font-face {
+    font-family: 'SVN-Waliglona';
+    src: url(./fonts/SVN-Waliglona.otf);
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,6 +17,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden  ;
+}
+
+.normal {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.hw {
+    font-family: 'SVN-Waliglona';
+}
+
+.beauty {
+    font-family: 'SVN-Fiolex Girls';
 }
 
 code {

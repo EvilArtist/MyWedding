@@ -16,7 +16,6 @@ function Column(index, width, params) {
     const lastIndex = params.lastIndex || params.numberOfCols - 1;
     if (index === lastIndex) {
         style.onRest = () => {
-            console.log('Complete');
             params.onTransitionEnded && params.onTransitionEnded();
         }
     }

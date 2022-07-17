@@ -16,7 +16,6 @@ function ColumnDown(index, width, params) {
     if (index === lastIndex) {
         console.log(style);
         style.onRest = () => {
-            console.log('Complete');
             params.onTransitionEnded && params.onTransitionEnded();
         }
     }

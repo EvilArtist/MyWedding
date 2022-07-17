@@ -34,7 +34,6 @@ function SatureEffect(props) {
             duration: props.duration || 500,
         },
         onRest: () => {
-            console.log('Complete');
             props.onTransitionEnded && props.onTransitionEnded();
         }
     });

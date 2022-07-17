@@ -1,7 +1,7 @@
-import './InvitationCard.css';
+import './Envelope.css';
 import React from 'react';
 
-class InvitationCard extends React.Component {
+class Envelope extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,6 +13,7 @@ class InvitationCard extends React.Component {
         this.setState({
             status: 'openning-1',
         });
+        this.props.openEnvelope();
         setTimeout(() => {
             this.setState({
                 status: 'openning-2',
@@ -27,14 +28,15 @@ class InvitationCard extends React.Component {
     }
 
     render() {
-        return <div className="invitation-card">
-            <div className="envelope-container ">
+        return <div className="envelope-container">
                 <div className="back-envelope">
 
                 </div>
-                <div className="front-envelope">
-                    <div className="front-envelope-background">
-                        
+                <div className="front-envelope-container">
+                    <div className="front-envelope">
+                        <div className="front-envelope-background">
+                            
+                        </div>
                     </div>
                 </div>
                 <div className="open-button-container">
@@ -42,12 +44,7 @@ class InvitationCard extends React.Component {
                     </div>
                 </div>
                 <div className={"open-envelope " + this.state.status}>
-                    <div className="glue-container">
-
-                        <div className="glue">
-
-                        </div>
-                    </div>
+                    <div className="glue"></div>
                 </div>
                 
                 <div className="button-envelope">
@@ -55,8 +52,7 @@ class InvitationCard extends React.Component {
                 </div>
                 <div className={"card " + this.state.status}></div>
             </div>
-        </div>
     }
 }
 
-export default InvitationCard
+export default Envelope
