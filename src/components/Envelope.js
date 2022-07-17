@@ -23,6 +23,11 @@ class Envelope extends React.Component {
                 this.setState({
                     status: 'openning-3',
                 });
+                setTimeout(() => {
+                    this.setState({
+                        status: 'openning-4',
+                    })
+                }, 500);
             }, 500);
         }, 500);
     }
