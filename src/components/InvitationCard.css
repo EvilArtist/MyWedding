@@ -1,0 +1,21 @@
+.invitation-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.corner-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    overflow: hidden;
+}
+
+.corner-image .image-container {
+    position: relative;
+    height: auto;
+    overflow: hidden;
+    margin-right: -4%;
+    margin-left: 4%;
+}

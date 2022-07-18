@@ -1,5 +1,6 @@
 import './Envelope.css';
 import React from 'react';
+import InvitationCard from './InvitationCard';
 
 class Envelope extends React.Component {
     constructor(props) {
@@ -45,7 +46,7 @@ class Envelope extends React.Component {
                     </div>
                 </div>
                 <div className="open-button-container">
-                    <div className="open-button" onClick={() => this.openEnvelop()}>
+                    <div className="open-button heart" onClick={() => this.openEnvelop()}>
                     </div>
                 </div>
                 <div className={"open-envelope " + this.state.status}>
@@ -55,7 +56,9 @@ class Envelope extends React.Component {
                 <div className="button-envelope">
 
                 </div>
-                <div className={"card " + this.state.status}></div>
+                <div className={"card " + this.state.status}>
+                    <InvitationCard />
+                </div>
             </div>
     }
 }
