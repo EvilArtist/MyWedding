@@ -1,6 +1,6 @@
 import './Envelope.css';
 import React from 'react';
-import InvitationCard from './InvitationCard';
+import FlipBook from './Flipbook';
 
 class Envelope extends React.Component {
     constructor(props) {
@@ -57,7 +57,7 @@ class Envelope extends React.Component {
 
                 </div>
                 <div className={"card " + this.state.status}>
-                    <InvitationCard />
+                    <FlipBook />
                 </div>
             </div>
     }

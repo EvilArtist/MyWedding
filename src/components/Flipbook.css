@@ -1,0 +1,337 @@
+@import url('./variables.css');
+
+.flipbook-container {
+    perspective: 1000px;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+}
+.flipbook {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid gray;
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.flip-part {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: translateX(100%) rotateY(0deg);
+    transform-origin: left;
+    transition: 3s;
+    transform-style: preserve-3d;
+    animation-duration: 2s;
+    background: #ecf0f1;
+    
+}
+
+.flip-part.flip-1 {
+    width: calc(100% / var(--number-of-parts));
+    left: 0;
+    transform: translateX(0);
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+.flip-part.last {
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    overflow: hidden;
+}
+
+.flipbook.flip {
+    transform: rotateX(45deg);
+    animation-name: book-flip;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+.flipbook.flip .flip-1{
+    animation-name: flip1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+.flipbook.flip .flip-part:not(.flip-1) {
+    animation-name: flip2;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1s;
+}
+
+.flipbook-page {
+    width: 100%;
+    height: 100%;
+    background: #2087F3;
+}
+
+
+@keyframes book-flip {
+    0% {
+        transform: rotateX(0deg);
+    }
+    
+    20% {
+        transform: rotateX(35deg);
+    }
+    
+    80% {
+        transform: rotateX(35deg);
+    }
+
+    100% {
+        transform: rotateX(0);
+    }
+}
+
+@keyframes flip1 {
+    0% {
+        transform: rotateY(0deg);
+    }
+    
+    80% {
+        transform: rotateY(-359.5deg);
+    }
+    100% {
+        transform: rotateY(-359.5deg);
+    }
+}
+@keyframes flip2 {
+    0% {
+      transform: translateX(100%) rotateY(0deg);
+    }
+    50% {
+      transform: translateX(100%) rotateY(10deg);
+    }
+}
+
+.flip-part-inner {
+    position: relative;
+    width: calc(100% );
+    height: 100%;
+    overflow: hidden;
+    margin-left: 1px;
+}
+
+.flip-part-content {
+    width: calc(100% * var(--number-of-parts));
+    height: 100%;
+    background-image: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+}
+
+.flip-2 > .flip-part-inner .flip-part-content{
+    margin-left: -100%;
+}
+
+.flip-3 > .flip-part-inner .flip-part-content{
+    margin-left: -200%;
+}
+.flip-4 > .flip-part-inner .flip-part-content{
+    margin-left: -300%;
+}
+.flip-5 > .flip-part-inner .flip-part-content{
+    margin-left: -400%;
+}
+.flip-6 > .flip-part-inner .flip-part-content{
+    margin-left: -500%;
+}
+.flip-7 > .flip-part-inner .flip-part-content{
+    margin-left: -600%;
+}
+.flip-8 > .flip-part-inner .flip-part-content{
+    margin-left: -700%;
+}
+.flip-9 > .flip-part-inner .flip-part-content{
+    margin-left: -800%;
+}
+.flip-10 > .flip-part-inner .flip-part-content{
+    margin-left: -900%;
+}
+.flip-11 > .flip-part-inner .flip-part-content{
+    margin-left: -1000%;
+}
+.flip-12 > .flip-part-inner .flip-part-content{
+    margin-left: -1100%;
+}
+.flip-13 > .flip-part-inner .flip-part-content{
+    margin-left: -1200%;
+}
+.flip-14 > .flip-part-inner .flip-part-content{
+    margin-left: -1300%;
+}
+.flip-15 > .flip-part-inner .flip-part-content{
+    margin-left: -1400%;
+}
+.flip-16 > .flip-part-inner .flip-part-content{
+    margin-left: -1500%;
+}
+.flip-17 > .flip-part-inner .flip-part-content{
+    margin-left: -1600%;
+}
+.flip-18 > .flip-part-inner .flip-part-content{
+    margin-left: -1700%;
+}
+
+.flip-19 > .flip-part-inner .flip-part-content{
+    margin-left: -1800%;
+}
+
+.flip-20 > .flip-part-inner .flip-part-content{
+    margin-left: -1900%;
+}
+
+.next-page-button {
+    height: 100%;
+    width: 100%;
+    height: 45px;
+    width: 50px;
+    background: linear-gradient(to right bottom, rgb(252, 227, 242), rgb(228, 16, 140));
+    animation-name: heart-beat;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    transform-origin: center;
+}
+.flipbook.flip-revert .next-page-button-container{
+    animation-name: move-left;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+.flipbook.flip .next-page-button-container {
+    animation-name: move-right;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+.next-page-button-container {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    height: 45px;
+    width: 50px;
+}
+
+@keyframes heart-beat {
+    0% {
+        transform: scale(1);
+    }
+    6.25% {
+        transform: scale(1.2);
+    }
+    12.5% {
+        transform: scale(1);
+    }
+    31.25% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+
+
+.flipbook.flip-revert {
+    transform: rotateX(45deg);
+    animation-name: book-flip-revert;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+.flipbook.flip-revert .flip-1{
+    animation-name: flip1-revert;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    transform: rotateY(-359.5deg);
+}
+.flipbook.flip-revert .flip-part:not(.flip-1) {
+    animation-name: flip2-revert;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1s;
+}
+
+@keyframes flip1-revert {
+    0% {
+        transform: rotateY(-359.5deg);
+    }
+    
+    80% {
+        transform: rotateY(0);
+    }
+    100% {
+        transform: rotateY(0);
+    }
+}
+@keyframes flip2-revert {
+    0% {
+        transform: translateX(100%) rotateY(0deg);
+      }
+    20% {
+      transform: translateX(100%) rotateY(10deg);
+    }
+    80% {
+      transform: translateX(100%) rotateY(0deg);
+    }
+    100% {
+        transform: translateX(100%) rotateY(0deg);
+    }
+}
+
+
+@keyframes book-flip-revert {
+    0% {
+        transform: rotateX(0deg);
+    }
+    
+    20% {
+        transform: rotateX(35deg);
+    }
+    
+    80% {
+        transform: rotateX(35deg);
+    }
+
+    100% {
+        transform: rotateX(0);
+    }
+}
+
+@keyframes move-right {
+    0% {
+        right: 0px;
+    }
+    
+    20% {
+        right: -65px;
+    }
+    
+    80% {
+        right: -65px;
+    }
+
+    100% {
+        right: 0px;
+    }
+}
+@keyframes move-left {
+    0% {
+        right: 0px;
+    }
+    
+    20% {
+        right: -65px;
+    }
+    
+    80% {
+        right: -65px;
+    }
+
+    100% {
+        right: 0px;
+    }
+}
