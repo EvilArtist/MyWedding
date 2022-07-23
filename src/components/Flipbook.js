@@ -1,6 +1,7 @@
 import React from 'react';
 import './Flipbook.css';
 import InvitationCard from './InvitationCard';
+import PartyCard from './PartyCard';
 
 function FlipPart(props) {
     const {part, end, content} = props;
@@ -30,14 +31,13 @@ class FlipBook extends React.Component {
         }
     }
     render() {
-        const content= <InvitationCard />;
+        const content= <PartyCard />;
         return <div className='flipbook-container'>
             <div className={"flipbook " + this.state.state}>
-                <FlipPart part={1} end={false} content={content}></FlipPart>
                 <div className="flipbook-page">
-                    
                     <InvitationCard />
                 </div>
+                <FlipPart part={1} end={false} content={content}></FlipPart>
                 <div className="next-page-button-container">
                     <div className="heart next-page-button" onClick={() => this.flipThisBook()}>
                     </div>

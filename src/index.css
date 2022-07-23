@@ -25,7 +25,7 @@ body {
 }
 
 .normal {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Cormorant SC', serif;
 }
 
 .hw {
@@ -37,7 +37,7 @@ body {
 }
 
 .handwrite {
-    font-family: 'SVN-Hamstring'
+    font-family: 'SVN-Hamstring';
 }
 
 code {

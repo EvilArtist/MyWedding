@@ -13,7 +13,7 @@ class InvitationCard extends React.Component {
         return <div className="invitation-card">
             <div className="corner-image">
                 <div className="image-container">
-                    <img src={process.env.PUBLIC_URL + "/images/corner1.png"}  alt="" />
+                    <img src={process.env.PUBLIC_URL + "/images/corner.png"}  alt="" />
                 </div>
             </div> 
             <div className="invitation-card-inner">
@@ -49,6 +49,14 @@ class InvitationCard extends React.Component {
                     Nguyễn Thị Quỳnh Ái
                 </div>
                 <div className="position">(Thứ nữ)</div>
+
+                <div className="wedding-details">
+                    <p>
+                        Hôn lễ được cử hành tại tư gia
+                    </p>
+                    <p>Vào lúc 10:00, ngày mùng 4 tháng 9 năm 2022</p>
+                    <p>Nhằm ngày mùng 9 tháng 8 năm Nhâm Dần</p>
+                </div>
             </div>
         </div>
     }

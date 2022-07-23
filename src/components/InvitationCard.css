@@ -9,9 +9,9 @@
 
 .corner-image {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
+    position: absolute;
+    left: -40px;
+    bottom: -25px;
     overflow: hidden;
 }
 
@@ -19,29 +19,22 @@
     position: relative;
     height: auto;
     overflow: hidden;
-    margin-right: -4%;
-    margin-left: 4%;
-    opacity: 0.4;
+    width: 250px
 }
 
 .invitation-card-inner {
     width: 100%;
     height: 100%;
-    background: radial-gradient(#FFCAD480 0%, transparent 60%),
-      radial-gradient(farthest-side at 20% 80%, #FFCAD480 0% ,  transparent 50%, transparent 70%);
-    background-blend-mode: screen;
-    color: rgb(228, 16, 140);
-    color: rgb(3 52 0);;
+    color: rgb(3 52 0);
     padding: 16px;
     box-sizing: border-box;
-    font-size: 0.8rem;
+    background: white;
 }
 
 .parent-name {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
     margin-top: 25px;
@@ -56,9 +49,18 @@
 }
 
 .big-name {
-    font-size: 4rem;
+    font-size: 3.5rem;
+    color: rgb(6, 103, 1);
 }
 
 .vs {
-    margin: 1rem;
+    margin: 0.5rem;
+}
+
+.wedding-details {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+}
+.wedding-details p{
+    margin: 0;
 }

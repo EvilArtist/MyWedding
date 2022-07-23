@@ -1,7 +1,6 @@
 import './App.css';
 import FlipCard from './components/FlipCard';
 import ImageSlider from "./components/ImageSliders";
-import InvitationCard from './components/InvitationCard';
 
 function App() {
   return (
