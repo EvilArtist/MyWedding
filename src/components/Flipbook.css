@@ -1,5 +1,7 @@
 @import url('./variables.css');
-
+:root {
+    --flippart-tranlate-x: 100%;
+}
 .flipbook-container {
     perspective: 1000px;
     width: 100%;
@@ -19,13 +21,15 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    transform: translateX(100%) rotateY(0deg);
+    transform: translateX(var(--flippart-tranlate-x)) rotateY(0deg);
     transform-origin: left;
     transition: 3s;
     transform-style: preserve-3d;
     animation-duration: 2s;
-    background: #ecf0f1;
+    border-width: 0;
     top: 0;
+    padding: 0;
+    background: #084632;
 }
 
 .flip-part.flip-1 {
@@ -103,19 +107,18 @@
 }
 @keyframes flip2 {
     0% {
-      transform: translateX(100%) rotateY(0deg);
+      transform: translateX(var(--flippart-tranlate-x)) rotateY(0deg);
     }
     50% {
-      transform: translateX(100%) rotateY(10deg);
+      transform: translateX(var(--flippart-tranlate-x)) rotateY(10deg);
     }
 }
 
 .flip-part-inner {
     position: relative;
-    width: calc(100% );
+    width: calc(100% + 0.5px);
     height: 100%;
     overflow: hidden;
-    margin-left: 1px;
 }
 
 .flip-part-content {
