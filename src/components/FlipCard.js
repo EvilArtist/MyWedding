@@ -9,6 +9,12 @@ class FlipCard extends React.Component {
             flip: false,
             status: 'closed'
         };
+        this.invitation = {
+            guestNameAndRelation: 'Anh và gia đình',
+            myTitle: 'chúng em',
+            guestTitle: 'anh',
+            name: 'Anh Phương Linh'
+        };
     }
 
     flipThisCard() {
@@ -37,12 +43,12 @@ class FlipCard extends React.Component {
                         </div>
                         <div className="invite_name">
                             <div className="invitation normal">Trân trọng kính mời: </div>
-                            <div className="guest-name hw">Anh gì đó</div>
+                            <div className="guest-name hw">{this.invitation.name}</div>
                         </div>
                     </div>
                 </div>
                 <div className="flip-card-back">
-                    <Envelope openEnvelope={() => this.openEnvelope()}/>
+                    <Envelope openEnvelope={() => this.openEnvelope()} invitation={this.invitation}/>
                 </div>
             </div>
         </div>

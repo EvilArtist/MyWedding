@@ -15,14 +15,17 @@ class PartyCard extends React.Component {
                 <img src={process.env.PUBLIC_URL + "/images/background.png"}  alt="" />
             </div> 
             <div className="invitation-card-inner">
+                <div className="invitation-card-name handwrite big-name">
+                    Thiệp mời
+                </div>
                 <div className="invitation-title">
                     Trân trọng kính mời
                 </div>
                 <div className="invitation-guest-name hw">
-                    Anh và gia đình
+                    {this.props.invitation.guestNameAndRelation}
                 </div>
                 <div className="invitation-content">
-                    Đến dự lễ báo hỷ của hai chúng tôi
+                    Đến dự lễ báo hỷ của hai {this.props.invitation.myTitle}
                 </div>
                
                 <div className="titlte">Được tổ chức vào lúc 18:00</div>
@@ -52,7 +55,7 @@ class PartyCard extends React.Component {
                        
                     </div>
                 </div>
-                <div className="wellcome hw">Sự hiện diện của anh là niềm vinh hạnh <br/> cho gia đình chúng tôi</div>
+                <div className="wellcome hw">Sự hiện diện của <span>{this.props.invitation.guestTitle}</span> là niềm vinh hạnh <br/> cho gia đình {this.props.invitation.myTitle}</div>
             </div>
         </div>
     }

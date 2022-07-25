@@ -169,3 +169,11 @@
     color: white;
     background: transparent;
 }
+
+.party-card .invitation-card-name {
+    color: var(--hight-light-color);
+    text-shadow: -4px 4px 1px #032519;
+    margin-top: -80px;
+    margin-bottom: 16px;
+    font-size: 3rem;
+}

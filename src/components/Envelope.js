@@ -57,7 +57,7 @@ class Envelope extends React.Component {
 
                 </div>
                 <div className={"card " + this.state.status}>
-                    <FlipBook />
+                    <FlipBook invitation={this.props.invitation} />
                 </div>
             </div>
     }
