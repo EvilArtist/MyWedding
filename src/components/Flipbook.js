@@ -6,13 +6,12 @@ import PartyCard from './PartyCard';
 function FlipPart(props) {
     const {part, end, content} = props;
     return <div className={"flip-part flip-" + part + (end ? " last" : "")}>
-        {(!end ? <FlipPart part={part + 1} end={part + 1 >= 12} content={content}></FlipPart> : '') }
         <div className="flip-part-inner">
             <div className='flip-part-content'>
                 {content}
             </div>
-            
         </div>
+        {(!end ? <FlipPart part={part + 1} end={part + 1 >= 12} content={content}></FlipPart> : '') }
     </div>
 }
 
@@ -31,7 +30,7 @@ class FlipBook extends React.Component {
         }
     }
     render() {
-        const content= <PartyCard />;
+        const content= <PartyCard invitation={this.props.invitation}/>;
         return <div className='flipbook-container'>
             <div className={"flipbook " + this.state.state}>
                 <div className="flipbook-page">

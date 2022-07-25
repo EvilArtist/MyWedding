@@ -1,14 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;700&family=Dancing+Script:wght@400;700&family=Lavishly+Yours&display=swap');
 @font-face {
     font-family: 'SVN-Fiolex Girls';
     font-weight: normal;
     font-style: normal;
     src: url(./fonts/SVN-Fiolex\ Girls.ttf);
-}
-
-@font-face {
-    font-family: 'SVN-Waliglona';
-    src: url(./fonts/SVN-Waliglona.otf);
 }
 
 @font-face {
@@ -29,7 +24,8 @@ body {
 }
 
 .hw {
-    font-family: 'SVN-Waliglona';
+    font-family: 'Dancing Script', cursive;
+    font-weight: 400;
 }
 
 .beauty {
@@ -37,7 +33,7 @@ body {
 }
 
 .handwrite {
-    font-family: 'SVN-Hamstring';
+    font-family: 'Lavishly Yours', cursive;
 }
 
 code {

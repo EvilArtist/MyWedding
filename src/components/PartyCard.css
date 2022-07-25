@@ -1,3 +1,6 @@
+:root {
+    --hight-light-color: #cde06d;
+}
 .party-card {
     position: relative;
     width: 100%;
@@ -41,7 +44,7 @@
 .party-card .bride-name {
     font-size: 2.2rem;
     font-weight: bold;
-    color: rgb(247, 4, 133);
+    color: var(--hight-light-color);
     position: absolute;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -63,32 +66,23 @@
 .party-card .bride-name {
     margin-bottom: 6px;
 }
-.party-card .invitation-card-inner {
-    width: 100%;
-    height: 100%;
-    color: rgb(3 52 0);
-    padding: 36px 8px;
-    box-sizing: border-box;
-    background: white;
-}
 
 .invitation-time-address {
     display: grid;
     grid-template-columns: auto auto 1fr;
     font-weight: bold;
-    margin-bottom: 0.5rem;
-    margin: 0 28px 0 42px;
+    margin: 16px 28px 16px 42px;
 }
 .invitation-time {
     text-align: center;
-    color: rgb(7, 123, 1);
+    color: var(--hight-light-color);
 }
 .date {
     font-size: 2rem;
     margin-bottom: 0.5rem;
 }
 .between-sepacrator {
-    background: rgb(7, 123, 1);
+    background: var(--hight-light-color);
     width: 2px;
     height: calc(100% - 16px);
     margin: auto 8px;
@@ -96,7 +90,7 @@
 }
 
 .party-card .address {
-    color: rgb(7, 123, 1);
+    color: var(--hight-light-color);
     text-decoration: none;
     text-align: left;
 }
@@ -109,14 +103,21 @@
     display: flex;
     place-items: center;
 }
-.icon-address img {
+.icons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.icons img {
     width: 20px;
     height: 20px;
-    float: right;
+    margin-left: 8px;
 }
+
 .wellcome {
     padding: 0 64px;
-    color: rgb(247, 4, 133);
+    color: var(--hight-light-color);
     line-height: 1.2rem;
     margin-top: 8px;
 }
@@ -141,9 +142,38 @@
 }
 
 .invitation-guest-name {
-    color: rgb(247, 4, 133);
+    color: var(--hight-light-color);
     width: calc(100% - 144px);
-    border-bottom: 1px dotted rgb(3 52 0);
+    border-bottom: 1px dotted white;
     margin: 8px 72px 8px 72px;
     line-height: 1rem;
+}
+
+.party-card .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.party-card .invitation-card-inner {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: unset;
+    transform: translateY(-50%);
+    padding: 36px 8px;
+    box-sizing: border-box;
+    color: white;
+    background: transparent;
+}
+
+.party-card .invitation-card-name {
+    color: var(--hight-light-color);
+    text-shadow: -4px 4px 1px #032519;
+    margin-top: -80px;
+    margin-bottom: 16px;
+    font-size: 3rem;
 }
