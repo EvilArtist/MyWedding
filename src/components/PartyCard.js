@@ -46,7 +46,7 @@ class PartyCard extends React.Component {
                         <div className="lunar-date">(15-08)</div>
                     </div>
                     <div className="between-sepacrator"></div>
-                    <a className="address" href='https://www.google.com/maps/dir/?api=1&destination=10.749961465233808, 106.63532412669963'>
+                    <a className="address" target="blank" href='https://www.google.com/maps/dir/?api=1&destination=10.749961465233808, 106.63532412669963'>
                         <div className='floor'>Sảnh Paris, Lầu 2<br></br> Nhà hàng tiệc cưới</div>
                         <div className='restaurant'>Vân Nghĩa</div>
                         <div className='full-address'>333 Đ. Nguyễn Văn Luông, Phường 12, Quận 6, Thành phố Hồ Chí Minh
