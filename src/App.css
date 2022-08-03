@@ -87,3 +87,30 @@
     font-size: 32px;
     color: #0bcaf5;
 }
+
+.story-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 1rem;
+}
+.story-grid {
+    display: flex;
+}
+.story-grid .image {
+    flex: 0 0 300px;
+    width: 100%;
+}
+.story-grid img {
+    width: 100%;
+    height: auto;
+}
+
+.story-header {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.story-container {
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 2rem;
+}

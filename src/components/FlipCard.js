@@ -1,6 +1,7 @@
 import './FlipCard.css';
 import React from 'react';
 import Envelope from './Envelope';
+import guestList from '../data.json';
 
 class FlipCard extends React.Component {
     constructor(props) {
@@ -9,12 +10,11 @@ class FlipCard extends React.Component {
             flip: false,
             status: 'closed'
         };
-        this.invitation = {
-            guestNameAndRelation: 'Anh và gia đình',
-            myTitle: 'chúng em',
-            guestTitle: 'anh',
-            name: 'Anh Phương Linh'
-        };
+        let search = window.location.search;
+        let params = new URLSearchParams(search);
+        let id = params.get('gid');
+        
+        this.invitation = guestList.find(guest => guest.id === id) || guestList[0];
     }
 
     flipThisCard() {

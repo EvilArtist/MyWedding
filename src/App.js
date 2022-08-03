@@ -3,6 +3,7 @@ import FlipCard from './components/FlipCard';
 import ImageSlider from "./components/ImageSliders";
 import Header from "./components/Header";
 import React, { useState } from 'react';
+import HowWeKnow from './components/HowWeKnow';
 
 function App() {
     const [cardShow, setCardShow] = useState(false);
@@ -18,6 +19,8 @@ function App() {
             {cardShow &&  <div className="invitation-card-viewer">
                 <FlipCard />
             </div>}
+
+            <HowWeKnow />
 
             <svg className="svg">
                 <clipPath id="heart" clipPathUnits="objectBoundingBox">
