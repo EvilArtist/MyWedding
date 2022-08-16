@@ -4,20 +4,39 @@
         "myTitle": "chúng tôi",
         "guestTitle": "anh/chị",
         "name": "Người nào đó",
-        "id": ""
+        "id": "",
+        "type": 2
     },
     {
         "guestNameAndRelation": "Anh và gia đình",
         "myTitle": "chúng em",
         "guestTitle": "anh",
         "name": "Anh Phương Linh",
-        "id": "86B5I8G"
+        "id": "86B5I8G",
+        "type": 3
     },
     {
         "guestNameAndRelation": "Anh",
         "myTitle": "chúng em",
         "guestTitle": "anh",
         "name": "Anh Modani",
-        "id": "S35DQ9A"
+        "id": "S35DQ9A",
+        "type": 3
+    },
+    {
+        "guestNameAndRelation": "Bạn và bà xã",
+        "myTitle": "chúng tôi",
+        "guestTitle": "bạn",
+        "name": "Bạn Linh",
+        "id": "O16ZEZ8",
+        "type": 2
+    },
+    {
+        "guestNameAndRelation": "Bạn và bà xã",
+        "myTitle": "chúng tôi",
+        "guestTitle": "bạn",
+        "name": "Bạn Khanh & Nga",
+        "id": "O16ZEZ8",
+        "type": 2
     }
 ]

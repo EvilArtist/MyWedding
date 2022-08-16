@@ -4,6 +4,7 @@ import ImageSlider from "./components/ImageSliders";
 import Header from "./components/Header";
 import React, { useState } from 'react';
 import HowWeKnow from './components/HowWeKnow';
+import Upcomming from './components/Upcomming';
 
 function App() {
     const [cardShow, setCardShow] = useState(false);
@@ -14,8 +15,9 @@ function App() {
             </div>
             <div className='slide-container'>
                 <ImageSlider />
+                <Upcomming />
             </div>
-
+        
             {cardShow &&  <div className="invitation-card-viewer">
                 <FlipCard />
             </div>}
