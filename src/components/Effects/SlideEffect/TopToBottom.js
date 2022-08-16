@@ -18,7 +18,6 @@ function TopToBottom(props) {
             easing: easings.easeInOutQuart,
         },
         onRest: () => {
-            console.log("Complete");
             props.onTransitionEnded && props.onTransitionEnded();
         }
     });

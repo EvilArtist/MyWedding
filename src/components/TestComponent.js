@@ -20,6 +20,7 @@ class TestComponent extends React.Component {
         };
     }
     toggleEffect = () => {
+        console.log("Complete");
         let effect = getRndInteger(0, effectsCount - 1);
         while (effect === this.state.effect) {
             effect = getRndInteger(0, effectsCount - 1);
