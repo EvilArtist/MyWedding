@@ -2,13 +2,42 @@ import './App.css';
 import FlipCard from './components/FlipCard';
 import ImageSlider from "./components/ImageSliders";
 import Header from "./components/Header";
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import HowWeKnow from './components/HowWeKnow';
 import Upcomming from './components/Upcomming';
 import LoveGrowup from './components/LoveGrowUp';
+import InvitationCard from './components/InvitationCard';
+import PartyCard from './components/PartyCard';
+import guestList from './data.json';
+import { exportComponentAsPNG } from 'react-component-export-image';
+
+
+const ComponentToPrint = React.forwardRef((props, ref) => (
+    <div className="full-card-container" ref={ref}>
+        <PartyCard invitation={props.invitation}/>
+        <InvitationCard/>
+    </div>
+));
 
 function App() {
     const [cardShow, setCardShow] = useState(false);
+    const [saving, setSaveStatus] = useState('prepare');
+    const componentRef = useRef();
+    let search = window.location.search;
+    let params = new URLSearchParams(search);
+    let id = params.get('gid');
+    const saveCard = () => {
+        setSaveStatus('saving');
+        exportComponentAsPNG(componentRef, {
+            fileName: 'Thiệp mời.png',
+        }).then(() => {
+
+        }).finally(() => {
+            setSaveStatus('done');
+        });
+    };
+
+    const invitation = guestList.find(guest => guest.id === id) || guestList[0];
     return (
         <div className="App">
             <div className="header-container">
@@ -20,9 +49,25 @@ function App() {
             </div>
         
             {cardShow &&  <div className="invitation-card-viewer">
-                <FlipCard />
+                <FlipCard invitation={invitation}/>
+                <div className="button-group">
+                    <button className="btn btn-left" onClick={() => setCardShow(!cardShow)}>Đóng</button>
+                    {saving === 'saving' ? 
+                        <button className="btn btn-right">
+                             <div className='btn-saving'>
+                                <div className='progress'></div>
+                                <span>Đang lưu thiệp</span>
+                            </div>
+                        </button> : 
+                        <button className="btn btn-right " 
+                        onClick={() =>  saveCard()}>
+                             <span>Lưu thiệp</span>
+                        </button>}
+                </div>
             </div>}
-
+            {cardShow ?<div className="full-card-hide">
+                <ComponentToPrint ref={componentRef} invitation={invitation}/>
+            </div>:''}
             <HowWeKnow />
             <LoveGrowup />
             <div className="story-container poem-container">
@@ -30,7 +75,7 @@ function App() {
                     Cảm ơn tất cả đã đem chúng tôi đến bên nhau
                 </div>
                 <div className='video-container'>
-                    <iframe width="100%" src="https://www.youtube.com/embed/pYBZRz2H6tc?autoplay=1" 
+                    <iframe width="100%" src="https://www.youtube.com/embed/pYBZRz2H6tc" 
                     title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
             </div>

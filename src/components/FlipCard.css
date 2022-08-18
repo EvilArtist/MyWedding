@@ -45,7 +45,7 @@
 .envelope {
     width: var(--card-width);
     height: var(--card-height);
-    background: url(../images/cover.jpeg);
+    background: url(../images/cover.jpg);
     background-size: cover;
     border-radius: var(--border-radius);
 }

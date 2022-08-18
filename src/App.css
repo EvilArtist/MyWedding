@@ -67,6 +67,39 @@
     background: linear-gradient(45deg, #DEB7B980 0%, #A3515D90 100%);
     perspective: 1500px;
     backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+.button-group {
+    position: absolute;
+    bottom: 0;
+    width: min(400px, 100vw);
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    box-sizing: border-box;
+}
+
+.btn {
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.5s;
+    color: #ecf0f1;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn.btn-left {
+    background: linear-gradient(to right, #DD2476 0%, #FF512F 100%);
+    border-radius: 20px 0 0 20px;
+    margin-right: 1px;
+}
+
+.btn.btn-right {
+    background: linear-gradient(to right, #FF512F 0%, #DD2476 100%);
+    border-radius: 0 20px 20px 0;
 }
 
 .clip-me {
@@ -139,6 +172,49 @@
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.full-card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 800px;
+    height: 580px;
+    text-align: center;
+    position: relative;
+}
+.full-card-hide {
+    position: fixed;
+    top: -100px;
+    transform: translateY(-200%);
+}
+
+.btn-saving{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-saving .progress {
+    width: 15px;
+    height: 15px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border-left: #ecf0f1 solid 2px;
+    border-top: #ecf0f148 solid 2px;
+    border-right: #ecf0f1 solid 2px;
+    border-bottom: #ecf0f148 solid 2px;
+    animation: saving 1s infinite;
+}
+
+@keyframes saving {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @media screen and (max-width: 768px) {

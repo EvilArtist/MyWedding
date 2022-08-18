@@ -9,3 +9,10 @@
     --card-height: 560px;
     --number-of-parts: 12;
 }
+
+@media screen and (max-width: 400px) {
+    :root {
+        --card-width: 100vw;
+        --card-height: 140vw;
+    }
+}

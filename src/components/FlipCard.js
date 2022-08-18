@@ -1,7 +1,6 @@
 import './FlipCard.css';
 import React from 'react';
 import Envelope from './Envelope';
-import guestList from '../data.json';
 
 class FlipCard extends React.Component {
     constructor(props) {
@@ -10,11 +9,6 @@ class FlipCard extends React.Component {
             flip: false,
             status: 'closed'
         };
-        let search = window.location.search;
-        let params = new URLSearchParams(search);
-        let id = params.get('gid');
-        
-        this.invitation = guestList.find(guest => guest.id === id) || guestList[0];
     }
 
     flipThisCard() {
@@ -34,21 +28,14 @@ class FlipCard extends React.Component {
             <div className="flip-card-inner">
                 <div className="flip-card-front" onClick={() => this.flipThisCard()}>
                     <div className='envelope'>
-                        <div className="name-border">
-                            <div className="text-container">
-                                <img src={process.env.PUBLIC_URL + "/front-border.png"} alt="border" />
-                                <div className="name name-1 beauty">Xuân Lộc</div>
-                                <div className="name name-2 beauty"><span>Quỳ</span><span style={{marginLeft: '-0.5rem'}}>nh Ái</span> </div>
-                            </div>
-                        </div>
                         <div className="invite_name">
                             <div className="invitation normal">Trân trọng kính mời: </div>
-                            <div className="guest-name hw">{this.invitation.name}</div>
+                            <div className="guest-name hw">{this.props.invitation.name}</div>
                         </div>
                     </div>
                 </div>
                 <div className="flip-card-back">
-                    <Envelope openEnvelope={() => this.openEnvelope()} invitation={this.invitation}/>
+                    <Envelope openEnvelope={() => this.openEnvelope()} invitation={this.props.invitation}/>
                 </div>
             </div>
         </div>
