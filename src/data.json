@@ -158,5 +158,13 @@
     "name": "pé Trinh @ Groove",
     "id": "ECPLVAA",
     "type": 3
+  },
+  {
+    "guestNameAndRelation": "groove",
+    "myTitle": "Chúng tôi",
+    "guestTitle": "groove",
+    "name": "Groove",
+    "id": "GROOVE",
+    "type": 3
   }
 ]
