@@ -30,11 +30,11 @@ class FlipBook extends React.Component {
         }
     }
     render() {
-        const content= <PartyCard invitation={this.props.invitation}/>;
+        const content= <InvitationCard cardType={this.props.invitation.type}/> ;
         return <div className='flipbook-container'>
             <div className={"flipbook " + this.state.state}>
                 <div className="flipbook-page">
-                    <InvitationCard />
+                    <PartyCard invitation={this.props.invitation}/>
                 </div>
                 <FlipPart part={1} end={false} content={content}></FlipPart>
                 <div className="next-page-button-container">

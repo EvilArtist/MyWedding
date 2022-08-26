@@ -18,7 +18,7 @@ class PartyCard extends React.Component {
                 year: '2022',
                 time: '08:00',
                 lunar: '07/08',
-                place: 'Tại nhà gái',
+                place: 'Tại tư gia',
                 address: 'Triệu Phong - Quảng Trị',
             },
             2: {
@@ -28,8 +28,8 @@ class PartyCard extends React.Component {
                 year: '2022',
                 time: '10:00',
                 lunar: '09/08',
-                place: 'Tại nhà trai',
-                address1: 'Thôn Hưng Thịnh, xã Hoàng Nam',
+                place: 'Tại tư gia',
+                address1: 'Thôn Hưng Thịnh - Hoàng Nam',
                 address: 'Nghĩa Hưng - Nam Định',
             },
             3: {
@@ -41,7 +41,7 @@ class PartyCard extends React.Component {
                 lunar: '16/08',
                 place: 'Sảnh Rome, Lầu 2',
                 restaurant: 'Vân Nghĩa',
-                address: '333 Đ. Nguyễn Văn Luông, Phường 12, Quận 6, Thành phố Hồ Chí Minh',
+                address: '333 Nguyễn Văn Luông, Phường 12, Quận 6, Thành phố Hồ Chí Minh',
             },
         };
         const ceremony = ceremonyMap[this.props.invitation.type];
@@ -60,9 +60,9 @@ class PartyCard extends React.Component {
                     {this.props.invitation.guestNameAndRelation}
                 </div>
                 <div className="invitation-content">
-                    Đến dự {ceremony.title} của hai {this.props.invitation.myTitle}
+                    Đến dự buổi tiệc rượu chung vui cùng gia đình {this.props.invitation.myTitle}<br/>
                 </div>
-               
+
                 <div className="titlte">Được tổ chức vào lúc {ceremony.time}</div>
                 <div className="invitation-time-address">
                     <div className="invitation-time">
@@ -92,7 +92,7 @@ class PartyCard extends React.Component {
                         : ''}
                     </div>
                 </div>
-                <div className="wellcome hw">Sự hiện diện của <span>{this.props.invitation.guestTitle}</span> là niềm vinh hạnh <br/> cho gia đình {this.props.invitation.myTitle}</div>
+                <div className="wellcome hw">Sự hiện diện của <span>{this.props.invitation.guestTitle}</span>  <br/> là niềm vinh hạnh cho gia đình {this.props.invitation.myTitle}</div>
             </div>
         </div>
     }

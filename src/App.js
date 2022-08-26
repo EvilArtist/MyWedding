@@ -14,18 +14,19 @@ import { exportComponentAsPNG } from 'react-component-export-image';
 
 const ComponentToPrint = React.forwardRef((props, ref) => (
     <div className="full-card-container" ref={ref}>
+        <InvitationCard cardType={props.invitation.type}/>
         <PartyCard invitation={props.invitation}/>
-        <InvitationCard/>
     </div>
 ));
 
 function App() {
-    const [cardShow, setCardShow] = useState(false);
-    const [saving, setSaveStatus] = useState('prepare');
-    const componentRef = useRef();
     let search = window.location.search;
     let params = new URLSearchParams(search);
     let id = params.get('gid');
+    const [cardShow, setCardShow] = useState(!!id);
+    const [saving, setSaveStatus] = useState('prepare');
+    const componentRef = useRef();
+    
     const saveCard = () => {
         setSaveStatus('saving');
         exportComponentAsPNG(componentRef, {
@@ -40,13 +41,14 @@ function App() {
     const invitation = guestList.find(guest => guest.id === id) || guestList[0];
     return (
         <div className="App">
-            <div className="header-container">
+            {!cardShow && <div className="header-container">
                 <Header showCard={() => setCardShow(!cardShow)} />
             </div>
+            }
+            {!cardShow &&
             <div className='slide-container'>
                 <ImageSlider />
-                <Upcomming />
-            </div>
+            </div>}
         
             {cardShow &&  <div className="invitation-card-viewer">
                 <FlipCard invitation={invitation}/>
@@ -68,8 +70,8 @@ function App() {
             {cardShow ?<div className="full-card-hide">
                 <ComponentToPrint ref={componentRef} invitation={invitation}/>
             </div>:''}
-            <HowWeKnow />
-            <LoveGrowup />
+            {/* <HowWeKnow />
+            <LoveGrowup /> */}
             <div className="story-container poem-container">
                 <div className="story-header">
                     Cảm ơn tất cả đã đem chúng tôi đến bên nhau

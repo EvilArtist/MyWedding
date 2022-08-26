@@ -64,9 +64,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, #DEB7B980 0%, #A3515D90 100%);
+    background: linear-gradient(45deg, #DEB7B9 0%, #A3515D 100%);
     perspective: 1500px;
-    backdrop-filter: blur(10px);
     z-index: 2;
 }
 

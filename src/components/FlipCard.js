@@ -29,7 +29,7 @@ class FlipCard extends React.Component {
                 <div className="flip-card-front" onClick={() => this.flipThisCard()}>
                     <div className='envelope'>
                         <div className="invite_name">
-                            <div className="invitation normal">Trân trọng kính mời: </div>
+                            <div className="invitation normal">Kính mời: </div>
                             <div className="guest-name hw">{this.props.invitation.name}</div>
                         </div>
                     </div>

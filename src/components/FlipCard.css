@@ -86,29 +86,33 @@
 }
 .invite_name {
     position: absolute;
-    bottom: 16px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    font-size: 1.5rem;
-    color: #ECF0F1;
-    width: calc(100% - 50px);
-    justify-content: start;
+    font-size: 1rem;
+    color: #000;
+    font-weight: bold;
+    justify-content: end;
+    width: 100%;
+    bottom: 0;
     align-items: center;
+    display: flex;
+    align-items: baseline;
+    background: #fff8;
+    padding: 0.625rem 1rem;
+    box-sizing: border-box;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 
 .invitation {
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-align: left;
-    margin-bottom: 10px;
     text-transform: uppercase;
 }
 
 .guest-name {
     position: relative;
     flex: 1;
-    padding:  4px 8px;
+    padding:  0px 8px;
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 1.5rem;
 }
 
@@ -119,5 +123,4 @@
     left: 0;
     width: 100%;
     height: 1px;
-    border-bottom: 1px dotted #ECF0F1;
 }

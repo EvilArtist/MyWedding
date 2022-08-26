@@ -10,6 +10,8 @@ class InvitationCard extends React.Component {
     }
 
     render() {
+        var ceremony = this.props.cardType === 3 ? "LỄ BÁO HỶ" :
+            this.props.cardType === 2 ? "LỄ THÀNH HÔN": "LỄ VU QUY";
         return <div className="invitation-card">
             <div className="corner-image">
                 <div className="image-container">
@@ -32,12 +34,12 @@ class InvitationCard extends React.Component {
                         <div className="dad">NGUYỄN ĐỨC ĐỊNH</div>
                         <div className="mom">LÊ THỊ VIÊN</div>
                         <div className="title address">
-                            431 Lê Duẩn, tt Ái Tử,<br/>Triệu Phong, Quảng Trị
+                            341 Lê Duẩn, tt Ái Tử,<br/>Triệu Phong, Quảng Trị
                         </div>
                     </div>
                 </div>
                 <div className="invitation-name">
-                    Trân trọng báo tin <strong>LỄ THÀNH HÔN</strong><br/>
+                    Trân trọng báo tin <strong>{ceremony}</strong><br/>
                     của hai con chúng tôi
                 </div>
                 <div className="groom-name handwrite big-name">

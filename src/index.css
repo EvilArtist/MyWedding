@@ -13,14 +13,14 @@
 
 body {
   margin: 0;
-  font-family: 'Cormorant SC', serif;
+  font-family: serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden  ;
 }
 
 .normal {
-    font-family: 'Cormorant SC', serif;
+    font-family: serif;
 }
 
 .hw {
