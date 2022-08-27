@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 :root {
     --hight-light-color: #cde06d;
 }
@@ -5,7 +12,8 @@
     position: relative;
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     font-size: 0.8rem;
     text-align: center;
 }
@@ -38,7 +46,9 @@
     width: 220px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
 
 .party-card .groom-name,
@@ -56,12 +66,16 @@
 .party-card .groom-name {
     top: 45%;
     left: 20%;
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+            transform: translateY(-100%);
 }
 .party-card .bride-name {
     top: 55%;
     right: 10%;
-    transform: translateY(0%);
+    -webkit-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+            transform: translateY(0%);
 }
 
 .party-card .bride-name {
@@ -69,7 +83,9 @@
 }
 
 .invitation-time-address {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: auto auto 1fr;
     grid-template-columns: auto auto 1fr;
     font-weight: bold;
     margin: 16px 28px 16px 42px;
@@ -101,12 +117,18 @@
     font-weight: 700;
 }
 .full-address {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     place-items: center;
 }
 .icons {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
 }
 
 
@@ -126,15 +148,25 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
 .party-card .heart {
+    background: -webkit-gradient(linear, left top, right bottom, from(rgb(252, 227, 242)), to(rgb(228, 16, 140)));
+    background: -o-linear-gradient(left top, rgb(252, 227, 242), rgb(228, 16, 140));
     background: linear-gradient(to right bottom, rgb(252, 227, 242), rgb(228, 16, 140));
-    animation-name: heart-beat;
-    animation-duration: 0.8s;
-    animation-iteration-count: infinite;
-    animation-fill-mode: both;
-    transform-origin: center;
+    -webkit-animation-name: heart-beat;
+            animation-name: heart-beat;
+    -webkit-animation-duration: 0.8s;
+            animation-duration: 0.8s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+    -webkit-transform-origin: center;
+        -ms-transform-origin: center;
+            transform-origin: center;
     width: 20px;
     height: 17px;
     color: transparent;
@@ -164,9 +196,12 @@
     left: 0;
     width: 100%;
     height: unset;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
     padding: 36px 8px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     color: white;
     background: transparent;
 }

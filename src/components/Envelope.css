@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @import url('./variables.css');
 
 .envelope-container {
@@ -7,8 +14,10 @@
     margin: auto;
     border-radius: var(--border-radius);
     background: transparent;
-    perspective: 2000px;
-    perspective-origin: bottom;
+    -webkit-perspective: 2000px;
+            perspective: 2000px;
+    -webkit-perspective-origin: bottom;
+            perspective-origin: bottom;
 }
 
 .back-envelope {
@@ -20,7 +29,8 @@
     background: var(--back-color);
     border-radius: var(--border-radius);
     z-index: 1;
-    filter: var(--shadow);
+    -webkit-filter: var(--shadow);
+            filter: var(--shadow);
 }
 
 .front-envelope-container {
@@ -31,7 +41,8 @@
     left: 0;
     right: 0;
     z-index: 3;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     overflow: hidden;
 }
 
@@ -39,13 +50,15 @@
     width: 100%;
     height: 100%;
     position: relative;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     background: transparent;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
     border-top: 80px solid transparent;
     border-left: 80px solid var(--back-color);
     border-right: 80px solid var(--back-color);
-    filter: drop-shadow(1px -1px 1px rgba(0, 0, 0, 0.2));
+    -webkit-filter: drop-shadow(1px -1px 1px rgba(0, 0, 0, 0.2));
+            filter: drop-shadow(1px -1px 1px rgba(0, 0, 0, 0.2));
 }
 
 .front-envelope-background::after {
@@ -79,24 +92,36 @@
     position: absolute;
     top: 0;
     z-index: 4;
-    transform-origin: top;
-    transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+        -ms-transform-origin: top;
+            transform-origin: top;
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    -webkit-transition: -webkit-transform 0.5s linear, -webkit-filter 0.5s linear;
+    transition: -webkit-transform 0.5s linear, -webkit-filter 0.5s linear;
+    -o-transition: transform 0.5s linear, filter 0.5s linear;
     transition: transform 0.5s linear, filter 0.5s linear;
+    transition: transform 0.5s linear, filter 0.5s linear, -webkit-transform 0.5s linear, -webkit-filter 0.5s linear;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
-    filter: var(--shadow);
+    -webkit-filter: var(--shadow);
+            filter: var(--shadow);
     overflow: hidden;
 }
 
 .open-envelope.openning-1 {
-    transform: rotateX(90deg);
-    filter: var(--open-shadow-1);
+    -webkit-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+    -webkit-filter: var(--open-shadow-1);
+            filter: var(--open-shadow-1);
     z-index: 3;
 }
 .open-envelope.openning-2,
 .open-envelope.openning-3,
 .open-envelope.openning-4 {
-    transform: rotateX(180deg);
-    filter: var(--open-shadow-2);
+    -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+    -webkit-filter: var(--open-shadow-2);
+            filter: var(--open-shadow-2);
     z-index: 0;
 }
 
@@ -104,7 +129,13 @@
     width: 100%;
     height: 100%;
     background: var(--back-color);
-    clip-path: polygon( 0% 0%, 
+    -webkit-clip-path: polygon( 0% 0%, 
+                        0% 22%, 0.5% 23.85%, 1% 25%, 1.5% 25.75%, 2% 26.5%, 2.5% 27.25%, 3% 28%, 
+                        40% 85%, 41% 86.29853543%, 42% 87.30241603%, 43% 88.10290059%, 44% 88.74699957%, 45% 89.26239754%, 46% 89.66666667%, 47% 89.9713935%, 48% 90.18425922%, 49% 90.31016282%, 50% 90.35183758%, 51% 90.31016282%, 52% 90.18425922%, 53% 89.9713935%, 54% 89.66666667%, 55% 89.26239754%, 56% 88.74699957%, 57% 88.10290059%, 58% 87.30241603%, 59% 86.29853543%, 60% 85%,
+                        97% 28%, 97.5% 27.25%, 98% 26.5%, 98.5% 25.75%, 99% 25%, 99.5% 23.85%, 100% 22%, 
+                        100% 0%,
+                        0% 0%);
+            clip-path: polygon( 0% 0%, 
                         0% 22%, 0.5% 23.85%, 1% 25%, 1.5% 25.75%, 2% 26.5%, 2.5% 27.25%, 3% 28%, 
                         40% 85%, 41% 86.29853543%, 42% 87.30241603%, 43% 88.10290059%, 44% 88.74699957%, 45% 89.26239754%, 46% 89.66666667%, 47% 89.9713935%, 48% 90.18425922%, 49% 90.31016282%, 50% 90.35183758%, 51% 90.31016282%, 52% 90.18425922%, 53% 89.9713935%, 54% 89.66666667%, 55% 89.26239754%, 56% 88.74699957%, 57% 88.10290059%, 58% 87.30241603%, 59% 86.29853543%, 60% 85%,
                         97% 28%, 97.5% 27.25%, 98% 26.5%, 98.5% 25.75%, 99% 25%, 99.5% 23.85%, 100% 22%, 
@@ -120,36 +151,90 @@
     height: 150px;
     width: 150px;
     top: calc(50% - 50px);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translate(-50%, -50%);
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     z-index: 5;
-    animation-name: button-hl;
-    animation-duration: 0.8s;
-    animation-iteration-count: infinite;
-    animation-fill-mode: both;
+    -webkit-animation-name: button-hl;
+            animation-name: button-hl;
+    -webkit-animation-duration: 0.8s;
+            animation-duration: 0.8s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+}
+@-webkit-keyframes button-hl {
+    0% {
+        -webkit-transform: translate(-50%, -50%) scale(1);
+                transform: translate(-50%, -50%) scale(1);
+        -webkit-filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+                filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+    }
+    6.25% {
+        -webkit-transform: translate(-50%, -50%) scale(1.1);
+                transform: translate(-50%, -50%) scale(1.1);
+        -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+                filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+    }
+    12.5% {
+        -webkit-transform: translate(-50%, -50%) scale(1);
+                transform: translate(-50%, -50%) scale(1);
+        -webkit-filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+                filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+    }
+    31.25% {
+        -webkit-transform: translate(-50%, -50%) scale(1.1);
+                transform: translate(-50%, -50%) scale(1.1);
+        -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+                filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+    }
+    50% {
+        -webkit-transform: translate(-50%, -50%) scale(1);
+                transform: translate(-50%, -50%) scale(1);
+        -webkit-filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+                filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+    }
 }
 @keyframes button-hl {
     0% {
-        transform: translate(-50%, -50%) scale(1);
-        filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+        -webkit-transform: translate(-50%, -50%) scale(1);
+                transform: translate(-50%, -50%) scale(1);
+        -webkit-filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+                filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
     }
     6.25% {
-        transform: translate(-50%, -50%) scale(1.1);
-        filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+        -webkit-transform: translate(-50%, -50%) scale(1.1);
+                transform: translate(-50%, -50%) scale(1.1);
+        -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+                filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
     }
     12.5% {
-        transform: translate(-50%, -50%) scale(1);
-        filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+        -webkit-transform: translate(-50%, -50%) scale(1);
+                transform: translate(-50%, -50%) scale(1);
+        -webkit-filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+                filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
     }
     31.25% {
-        transform: translate(-50%, -50%) scale(1.1);
-        filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+        -webkit-transform: translate(-50%, -50%) scale(1.1);
+                transform: translate(-50%, -50%) scale(1.1);
+        -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+                filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
     }
     50% {
-        transform: translate(-50%, -50%) scale(1);
-        filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+        -webkit-transform: translate(-50%, -50%) scale(1);
+                transform: translate(-50%, -50%) scale(1);
+        -webkit-filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+                filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
     }
 }
 .open-button {
@@ -157,21 +242,32 @@
     width: 100%;
     height: 90%;
     margin-top: 10%;
+    background: -webkit-gradient(linear, left top, right bottom, from(rgb(252, 227, 242)), to(rgb(228, 16, 140)));
+    background: -o-linear-gradient(left top, rgb(252, 227, 242), rgb(228, 16, 140));
     background: linear-gradient(to right bottom, rgb(252, 227, 242), rgb(228, 16, 140));
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .open-button::before {
     left: 50%;
-    transform: rotate(-45deg);
-    transform-origin: 0 100%;
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+            transform-origin: 0 100%;
     border-radius: 50% 50% 50% 0;
 }
 
 .open-button::after {
     left: 0;
-    transform: rotate(45deg);
-    transform-origin: 100% 100%;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
     border-radius: 50% 50% 0 50%;
 }
 
@@ -182,21 +278,35 @@
     right: 12px;
     bottom: 2px;
     z-index: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     border-radius: var(--border-radius);
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
     transition: transform 0.5s;
-    filter: var(--shadow);
+    transition: transform 0.5s, -webkit-transform 0.5s;
+    -webkit-filter: var(--shadow);
+            filter: var(--shadow);
 }
 
 .card.openning-3 {
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+            transform: translateY(-100%);
 }
 
 .card.openning-4 {
     z-index: 5;
-    transform: translateY(0%) translateZ(500px);
+    -webkit-transform: translateY(0%) translateZ(500px);
+            transform: translateY(0%) translateZ(500px);
 }
 
 .card:not(.openning-4) .next-page-button-container{
